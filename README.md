@@ -1,5 +1,5 @@
 ## asset
-#### 描述: 
+#### 描述: 资产--杨鹏
 #### 字段总数: 34
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -38,7 +38,7 @@
 |regenerator |varchar(32) |YES |None  | 更新人 |
 |assets_src_type |tinyint(1) |YES |1  | 资产来源 1:批量导入 2:人工添加 3:流量解析 4:日志解析 |
 ## cmdb_hosts
-#### 描述: 国信cmdb资产表-牛虹
+#### 描述: 国信cmdb资产表-单吉祥
 #### 字段总数: 12
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -55,7 +55,7 @@
 |asset_value |varchar(20) |YES |None  | 资产价值 |
 |nettype |varchar(100) |YES |None  |  |
 ## custom_threshold
-#### 描述: 
+#### 描述: 前端界面单值图表-阈值控制表-单吉祥
 #### 字段总数: 3
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -63,7 +63,7 @@
 |ct_name |varchar(200) |YES |None  |  |
 |ct_value |int(11) |NO |None  |  |
 ## da_component
-#### 描述: 
+#### 描述: 大盘组件表-许瑛
 #### 字段总数: 20
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -88,7 +88,7 @@
 |create_user |varchar(50) |YES |None  |  |
 |update_user |varchar(50) |YES |None  |  |
 ## da_component_ref
-#### 描述: 大盘主表
+#### 描述: 大盘主表-许瑛
 #### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -100,7 +100,7 @@
 |create_user |varchar(50) |YES |None  |  |
 |update_user |varchar(50) |YES |None  |  |
 ## da_dashboard
-#### 描述: 大盘主表
+#### 描述: 大盘主表-许瑛
 #### 字段总数: 17
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -122,7 +122,7 @@
 |update_user |varchar(50) |YES |None  | 修改者 |
 |layout |text |YES |None  | 大盘布局 |
 ## da_dictionary
-#### 描述: 字典信息表
+#### 描述: 大盘字典信息表-许瑛
 #### 字段总数: 8
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -135,7 +135,7 @@
 |update_user |varchar(32) |NO |None  | 更新者 |
 |update_time |datetime |NO |None  | 更新时间 |
 ## da_group
-#### 描述: 组件组表
+#### 描述: 大盘组件组表-许瑛
 #### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -147,7 +147,7 @@
 |create_user |varchar(50) |YES |None  |  |
 |update_user |varchar(50) |YES |None  |  |
 ## dns_result
-#### 描述: 
+#### 描述: dns任务结果--杨鹏
 #### 字段总数: 6
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -158,7 +158,7 @@
 |update_date |datetime |YES |None  |  |
 |regenerator |varchar(32) |YES |None  | 更新人 |
 ## etl_conf_dateformat
-#### 描述: 
+#### 描述: ETL create_time 时间转换格式预定义-李国浩
 #### 字段总数: 4
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -167,7 +167,7 @@
 |date_example |varchar(255) |YES |None  |  |
 |locale |varchar(255) |YES |None  |  |
 ## etl_dict_define
-#### 描述: 
+#### 描述: ETL 动态补字典基础表-李国浩
 #### 字段总数: 4
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -176,7 +176,7 @@
 |dict_ch_name |varchar(1024) |NO |  |  |
 |dict_schema |text |NO |None  |  |
 ## etl_global_field
-#### 描述: 
+#### 描述: ETL 提取器全局字段信息-李国浩
 #### 字段总数: 4
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -185,7 +185,7 @@
 |field_type |varchar(255) |YES |None  |  |
 |field_ch_name |varchar(1024) |YES |None  |  |
 ## etl_job
-#### 描述: 
+#### 描述: ETL 任务总表-李国浩
 #### 字段总数: 10
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -200,7 +200,7 @@
 |create_time |datetime |YES |None  | 创建时间 |
 |update_time |datetime |YES |None  | 更新时间 |
 ## etl_node_info
-#### 描述: 
+#### 描述: ETL keeperlive 节点上报信息-李国浩
 #### 字段总数: 6
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -211,7 +211,7 @@
 |host_name |varchar(1024) |YES |None  |  |
 |host_port |int(11) |YES |None  |  |
 ## etl_node_workers
-#### 描述: 
+#### 描述: ETL 采集器，解析器节点信息-李国浩
 #### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -223,7 +223,7 @@
 |create_time |timestamp |YES |CURRENT_TIMESTAMP  |  |
 |update_time |timestamp |YES |CURRENT_TIMESTAMP  |  |
 ## etl_rules
-#### 描述: 
+#### 描述: ETL 解析规则配置信息-李国浩
 #### 字段总数: 10
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -238,7 +238,7 @@
 |rules |varchar(1024) |YES |  | 规则 |
 |status |varchar(1) |YES |1  | 状态，备用 |
 ## etl_task_collect
-#### 描述: 
+#### 描述: ETL 采集器采集任务信息-李国浩
 #### 字段总数: 6
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -249,7 +249,7 @@
 |conf_content |varchar(3000) |YES |None  | 采集器配置内容，存储json内容 |
 |state |int(2) |YES |None  | 任务状态 |
 ## etl_task_extract
-#### 描述: 
+#### 描述: ETL 提取器配置信息-李国浩
 #### 字段总数: 8
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -262,7 +262,7 @@
 |extract_data_sample |text |YES |None  | 提取数据示例 |
 |extract_type |varchar(20) |YES |None  | 类型regex/char |
 ## etl_task_output
-#### 描述: 
+#### 描述: ETL 解析任务数据存储-李国浩
 #### 字段总数: 4
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -271,7 +271,7 @@
 |conf_content |varchar(3000) |YES |None  | 配置内容 |
 |state |int(2) |YES |None  | 状态 |
 ## etl_task_output_status
-#### 描述: 
+#### 描述: ETL 备用，暂不用-李国浩
 #### 字段总数: 8
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -284,7 +284,7 @@
 |create_time |timestamp |YES |CURRENT_TIMESTAMP  |  |
 |update_time |timestamp |YES |CURRENT_TIMESTAMP  | 更新时间 |
 ## event_investigation_task
-#### 描述: 事件调查任务
+#### 描述: 事件调查任务-杨祎
 #### 字段总数: 5
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -294,7 +294,7 @@
 |operation_time |date |YES |None  | 事件调查任务创建时间 |
 |operation_name |varchar(250) |YES |None  | 事件调查任务创建用户 |
 ## event_investigation_users_middle
-#### 描述: 事件调查任务分享用户中间表
+#### 描述: 事件调查任务分享用户中间表-杨祎
 #### 字段总数: 4
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -303,7 +303,7 @@
 |user_id |int(11) |YES |None  | 被分享用户id |
 |user_name |varchar(255) |YES |None  | 被分享用户姓名 |
 ## event_tag
-#### 描述: 事件标签表
+#### 描述: 事件标签表-杨祎
 #### 字段总数: 3
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -311,7 +311,7 @@
 |tag_name |varchar(150) |YES |None  | 标签名称 |
 |tag_score |bigint(20) |YES |None  | 标签打分 |
 ## event_tag_middle
-#### 描述: 事件标签与事件中间表
+#### 描述: 事件标签与事件中间表-杨祎
 #### 字段总数: 4
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -320,7 +320,7 @@
 |tag_id |int(11) |YES |None  | 标签id |
 |tag_name |varchar(250) |YES |None  | 标签名称 |
 ## event_task_relation
-#### 描述: 事件调查任务关联细表
+#### 描述: 事件调查任务关联细表-杨祎
 #### 字段总数: 26
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -351,7 +351,7 @@
 |trace_task_desc |text |YES |None  | 溯源任务描述 |
 |trace_status |int(11) |YES |None  | 溯源0未运行 1运行中 2已完成 |
 ## external_asset_task_detail
-#### 描述: 
+#### 描述: 外部资产扫描任务详细--杨鹏
 #### 字段总数: 8
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -364,7 +364,7 @@
 |update_date |datetime |YES |None  |  |
 |regenerator |varchar(32) |YES |None  | 更新人 |
 ## external_asset_task_info
-#### 描述: 
+#### 描述: 外部资产扫描任务信息--杨鹏
 #### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -376,14 +376,14 @@
 |update_date |datetime |YES |None  |  |
 |regenerator |varchar(32) |YES |None  | 更新人 |
 ## festival
-#### 描述: 
+#### 描述: 趋势分析-节假日映射表-孙志收
 #### 字段总数: 2
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |festival_day |varchar(8) |NO |None  |  |
 |festival_comment |varchar(255) |YES |None  |  |
 ## fs_search_params
-#### 描述: 
+#### 描述: 全文检索-保存历史搜索-单吉祥
 #### 字段总数: 10
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -398,7 +398,7 @@
 |comment |varchar(500) |YES |None  | 注释说明 |
 |search_type |varchar(2) |YES |None  |  |
 ## ga_access_authority
-#### 描述: 角色访问权限表
+#### 描述: 角色访问权限表-单吉祥
 #### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -410,7 +410,7 @@
 |update_user |varchar(32) |NO |None  | 更新者 |
 |update_time |datetime |NO |None  | 更新时间 |
 ## ga_access_event_log
-#### 描述: 系统访问日志表
+#### 描述: 系统访问日志表-单吉祥
 #### 字段总数: 12
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -427,7 +427,7 @@
 |oper_type |varchar(50) |YES |None  | 操作类型（增加，删除，修改，下载，查询，登录，退出等） |
 |oper_result |varchar(50) |YES |None  | 操作结果（登录成功，修改失败等） |
 ## ga_data_dictionary
-#### 描述: 字典信息表
+#### 描述: 字典信息表-单吉祥
 #### 字段总数: 8
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -440,7 +440,7 @@
 |update_user |varchar(32) |NO |None  | 更新者 |
 |update_time |datetime |NO |None  | 更新时间 |
 ## ga_group
-#### 描述: 用户组信息表
+#### 描述: 用户组信息表-单吉祥
 #### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -452,7 +452,7 @@
 |update_user |varchar(32) |NO |None  | 更新者 |
 |update_time |datetime |NO |None  | 更新时间 |
 ## ga_menu
-#### 描述: 菜单信息表
+#### 描述: 菜单信息表-单吉祥
 #### 字段总数: 11
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -468,7 +468,7 @@
 |update_user |varchar(32) |NO |None  | 更新者 |
 |update_time |datetime |NO |None  | 更新时间 |
 ## ga_messages
-#### 描述: 站内消息/邮件提醒表
+#### 描述: 站内消息/邮件提醒表-牛虹
 #### 字段总数: 9
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -482,7 +482,7 @@
 |send_time |datetime |YES |None  | 发送日期时间 |
 |user_id |varchar(50) |YES |None  | 站内信指定某人(需确认是否有此需求) |
 ## ga_page_oper
-#### 描述: 用户操作信息表
+#### 描述: 用户操作信息表-单吉祥
 #### 字段总数: 8
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -495,7 +495,7 @@
 |update_user |varchar(32) |NO |None  | 更新者 |
 |update_time |datetime |NO |None  | 更新时间 |
 ## ga_pwd_policy
-#### 描述: 用户策略表
+#### 描述: 用户策略表-单吉祥
 #### 字段总数: 8
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -508,7 +508,7 @@
 |update_user |varchar(32) |NO |None  | 更新者 |
 |update_time |datetime |NO |None  | 更新时间 |
 ## ga_role
-#### 描述: 角色信息表
+#### 描述: 角色信息表-单吉祥
 #### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -520,7 +520,7 @@
 |update_user |varchar(32) |NO |None  | 更新者 |
 |update_time |datetime |NO |None  | 更新时间 |
 ## ga_user
-#### 描述: 用户信息表
+#### 描述: 用户信息表-单吉祥
 #### 字段总数: 22
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -547,7 +547,7 @@
 |update_user |varchar(32) |NO |None  | 更新者 |
 |update_time |datetime |NO |None  | 更新时间 |
 ## ga_user_messages
-#### 描述: 用户信息表
+#### 描述: 用户信息表-单吉祥
 #### 字段总数: 11
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -562,77 +562,57 @@
 |create_time |datetime |NO |None  | 创建时间 |
 |update_user |varchar(32) |NO |None  | 更新者 |
 |update_time |datetime |NO |None  | 更新时间 |
+## health_cofiguration_data
+#### 描述: 数据质量监控配置表-秦霄飞
+#### 字段总数: 8
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |varchar(32) |NO |None  | 数据质量监控配置 |
+|job |varchar(64) |YES |None  |  |
+|data_operator |tinyint(1) |YES |None  | 1：大于，2：大于等于，3：等于，4：小于，5：小于等于 |
+|data_val |varchar(8) |YES |None  |  |
+|data_flg |tinyint(1) |YES |None  | 0：不监控，1：监控 |
+|show_flg |tinyint(1) |YES |None  | 0：关（不显示）1：开（显示） |
+|create_user |varchar(64) |YES |None  |  |
+|create_time |datetime |YES |None  |  |
 ## health_cofiguration_host
-#### 描述: 
+#### 描述: 服务器监控配置表-秦霄飞
 #### 字段总数: 17
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |id |varchar(32) |NO |None  | 服务器监控配置表 |
 |ip |varchar(15) |YES |None  |  |
-|cpu_operator |tinyint(1) |YES |None  | 1:大于
-2:大于等于
-3:等于
-4:小于
-5:小于等于 |
+|cpu_operator |tinyint(1) |YES |None  | 1:大于,2:大于等于,3:等于,4:小于,5:小于等于 |
 |cpu_val |varchar(8) |YES |None  |  |
-|cpu_flg |tinyint(1) |YES |None  | 0:不监控
-1:监控 |
-|mem_operator |tinyint(1) |YES |None  | 1:大于
-2:大于等于
-3:等于
-4:小于
-5:小于等于 |
+|cpu_flg |tinyint(1) |YES |None  | 0:不监控,1:监控 |
+|mem_operator |tinyint(1) |YES |None  | 1:大于,2:大于等于,3:等于,4:小于,5:小于等于 |
 |mem_val |varchar(8) |YES |None  |  |
-|mem_flg |tinyint(1) |YES |None  | 0:不监控
-1:监控 |
-|disk_operator |tinyint(1) |YES |None  | 1:大于
-2:大于等于
-3:等于
-4:小于
-5:小于等于 |
+|mem_flg |tinyint(1) |YES |None  | 0:不监控,1:监控 |
+|disk_operator |tinyint(1) |YES |None  | 1:大于,2:大于等于,3:等于,4:小于,5:小于等于 |
 |disk_val |varchar(8) |YES |None  |  |
-|disk_flg |tinyint(1) |YES |None  | 0:不监控
-1:监控 |
-|network_operator |tinyint(1) |YES |None  | 1:大于
-2:大于等于
-3:等于
-4:小于
-5:小于等于 |
+|disk_flg |tinyint(1) |YES |None  | 0:不监控,1:监控 |
+|network_operator |tinyint(1) |YES |None  | 1:大于,2:大于等于,3:等于,4:小于,5:小于等于 |
 |network_val |varchar(64) |YES |None  |  |
-|network_flg |tinyint(4) |YES |None  | 0:不监控
-1:监控 |
-|show_flg |tinyint(1) |YES |None  | 0:关（不显示）
-1:开（显示 |
+|network_flg |tinyint(4) |YES |None  | 0:不监控,1:监控 |
+|show_flg |tinyint(1) |YES |None  | 0:关（不显示）,1:开（显示) |
 |create_user |varchar(64) |YES |None  |  |
 |create_time |datetime |YES |None  |  |
 ## health_cofiguration_module
-#### 描述: 
+#### 描述: 平台组件监控配置表-秦霄飞
 #### 字段总数: 13
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |id |varchar(32) |NO |None  | 服务器监控配置表 |
 |module |varchar(32) |YES |None  |  |
 |ip |text |YES |None  |  |
-|cpu_operator |tinyint(1) |YES |None  | 1:大于
-2:大于等于
-3:等于
-4:小于
-5:小于等于 |
+|cpu_operator |tinyint(1) |YES |None  | 1:大于,2:大于等于,3:等于,4:小于,5:小于等于 |
 |cpu_val |varchar(8) |YES |None  |  |
-|cpu_flg |tinyint(1) |YES |None  | 0:不监控
-1:监控 |
-|mem_operator |tinyint(1) |YES |None  | 1:大于
-2:大于等于
-3:等于
-4:小于
-5:小于等于 |
+|cpu_flg |tinyint(1) |YES |None  | 0:不监控,1:监控 |
+|mem_operator |tinyint(1) |YES |None  | 1:大于,2:大于等于,3:等于,4:小于,5:小于等于 |
 |mem_val |varchar(8) |YES |None  |  |
-|mem_flg |tinyint(1) |YES |None  | 0:不监控
-1:监控 |
-|process_flg |tinyint(1) |YES |None  | 0:不监控
-1:监控 |
-|show_flg |tinyint(1) |YES |None  | 0:关（不显示）
-1:开（显示 |
+|mem_flg |tinyint(1) |YES |None  | 0:不监控,1:监控 |
+|process_flg |tinyint(1) |YES |None  | 0:不监控,1:监控 |
+|show_flg |tinyint(1) |YES |None  | 0:关（不显示）,1:开（显示) |
 |create_user |varchar(64) |YES |None  |  |
 |create_time |datetime |YES |None  |  |
 ## index_setting
@@ -667,7 +647,7 @@
 |user_id |int(11) |YES |None  | 用户id |
 |user_name |varchar(250) |YES |None  | 用户名 |
 ## model_monitoring
-#### 描述: 
+#### 描述: Spark模型名单表-陆建彬
 #### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -679,7 +659,7 @@
 |start_time |datetime |YES |None  | 模型运行开始时间 |
 |end_time |datetime |YES |None  | 模型运行结束时间 |
 ## model_monitor_conf
-#### 描述: 
+#### 描述: Spark模型配置表-陆建彬
 #### 字段总数: 5
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -689,7 +669,7 @@
 |model_type |int(2) |NO |None  | 模型类型, 1:单页面, 2单用户 |
 |status |int(2) |NO |0  | 状态, 0:禁用, 1:启用 |
 ## property_tree
-#### 描述: 
+#### 描述: 树形属性--杨鹏
 #### 字段总数: 6
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -720,7 +700,7 @@
 |update_time |datetime |YES |None  |  |
 |update_user |varchar(255) |YES |None  |  |
 ## subdomain_result
-#### 描述: 
+#### 描述: 子域名任务--杨鹏
 #### 字段总数: 6
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -737,7 +717,7 @@
 |:----    |:-------    |:--- |----|------      |
 |a |char(1) |YES |None  |  |
 ## ta_eqpt_patch
-#### 描述: 
+#### 描述: 威胁分析-补丁漏洞表-单吉祥
 #### 字段总数: 32
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -774,7 +754,7 @@
 |collect_time |varchar(20) |YES |None  | 日志采集时间-日志采集时间 转换成到毫秒级的长整型数字字符串 |
 |occurrence |int(10) unsigned zerofill |YES |0000000000  | 数量 |
 ## tb_analyzer
-#### 描述: 关联规则表
+#### 描述: 关联规则表-唐笑于
 #### 字段总数: 17
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -796,7 +776,7 @@
 |update_time |datetime |YES |None  | 更新时间 |
 |eqpt_device_type |varchar(50) |NO |None  |  |
 ## tb_analyzer_category
-#### 描述: 关联规则分类
+#### 描述: 关联规则分类-唐笑于
 #### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -808,7 +788,7 @@
 |update_user |int(11) |YES |None  | 修改人 |
 |update_time |datetime |YES |None  | 修改时间 |
 ## tb_analyzer_condition
-#### 描述: 规则条件表
+#### 描述: 规则条件表-唐笑于
 #### 字段总数: 5
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -818,7 +798,7 @@
 |count |int(4) |NO |1  |  |
 |timewindow |int(4) |NO |None  | 单位 秒 |
 ## tb_analyzer_desc
-#### 描述: 关联事件描述表
+#### 描述: 关联事件描述表-唐笑于
 #### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -830,7 +810,7 @@
 |filter_text_front |varchar(50) |YES |None  |  |
 |filter_text_end |varchar(50) |YES |None  |  |
 ## tb_analyzer_group
-#### 描述: 关联规则归并表
+#### 描述: 关联规则归并表-唐笑于
 #### 字段总数: 5
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -840,7 +820,7 @@
 |filter_id |int(11) |NO |None  |  |
 |field |varchar(20) |NO |None  |  |
 ## tb_analyzer_join
-#### 描述: 关联规则条件关联表
+#### 描述: 关联规则条件关联表-唐笑于
 #### 字段总数: 10
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -855,7 +835,7 @@
 |join_filter_id |int(11) |YES |None  | 关联过滤器 |
 |join_field |varchar(20) |YES |None  | 关联字段 |
 ## tb_filter
-#### 描述: 过滤器
+#### 描述: 过滤器-唐笑于
 #### 字段总数: 11
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -871,7 +851,7 @@
 |update_user |char(32) |YES |None  | 修改人 |
 |update_time |datetime |YES |None  | 修改时间 |
 ## tb_filter_category
-#### 描述: 过滤器分类
+#### 描述: 过滤器分类-唐笑于
 #### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -883,7 +863,7 @@
 |update_user |int(11) |YES |None  | 修改人 |
 |update_time |datetime |YES |None  | 修改时间 |
 ## tb_filter_details
-#### 描述: 过滤器明细表
+#### 描述: 过滤器明细表-唐笑于
 #### 字段总数: 9
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -897,7 +877,7 @@
 |value |text |YES |None  | 值 |
 |list_id |int(11) |YES |None  | 名单ID，只有node_type是list时才可以选择名单 |
 ## tb_list
-#### 描述: 名单表
+#### 描述: 名单表-唐笑于
 #### 字段总数: 8
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -910,7 +890,7 @@
 |update_user |int(11) |YES |None  | 修改人 |
 |update_time |datetime |YES |None  | 修改时间 |
 ## tb_list_details
-#### 描述: 名单详细信息
+#### 描述: 名单详细信息-唐笑于
 #### 字段总数: 9
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -924,7 +904,7 @@
 |update_user |int(11) |YES |None  | 修改人 |
 |update_time |datetime |YES |None  | 修改时间 |
 ## topo_line
-#### 描述: 
+#### 描述: 拓扑线--杨鹏
 #### 字段总数: 6
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -935,7 +915,7 @@
 |update_date |datetime |YES |None  |  |
 |regenerator |varchar(32) |YES |None  | 更新人 |
 ## topo_node_pos
-#### 描述: 
+#### 描述: 拓扑节点--杨鹏
 #### 字段总数: 6
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -946,7 +926,7 @@
 |update_date |datetime |YES |None  |  |
 |regenerator |varchar(32) |YES |None  | 更新人 |
 ## trace_source_tasks
-#### 描述: 
+#### 描述: 溯源任务表-陆建彬
 #### 字段总数: 12
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
@@ -962,156 +942,8 @@
 |notification |varchar(500) |YES |None  | 消息通知 1：消息通知，2邮件通知，3消息邮件都通知  即：01   10  11 |
 |personnel_list |varchar(1000) |YES |None  | 通知人员列表 多个人员用，逗号隔开 |
 |status |int(11) |YES |None  | 执行状态 0未运行 1运行中 2已完成 |
-## ueba_baseline
-#### 描述: 
-#### 字段总数: 5
-|字段|类型|允许空|默认|注释|
-|:----    |:-------    |:--- |----|------      |
-|id |bigint(20) |NO |None  |  |
-|frequency |varchar(255) |YES |None  |  |
-|generated_date |datetime |YES |None  |  |
-|name |varchar(255) |YES |None  |  |
-|quantity |bigint(20) |NO |None  |  |
-## ueba_baseline_details
-#### 描述: 
-#### 字段总数: 4
-|字段|类型|允许空|默认|注释|
-|:----    |:-------    |:--- |----|------      |
-|id |bigint(20) |NO |None  |  |
-|baseline_id |bigint(20) |NO |None  |  |
-|key |varchar(45) |YES |None  |  |
-|value |varchar(45) |YES |None  |  |
-## ueba_danger_list
-#### 描述: 
-#### 字段总数: 10
-|字段|类型|允许空|默认|注释|
-|:----    |:-------    |:--- |----|------      |
-|id |bigint(20) |NO |None  |  |
-|create_time |datetime |YES |None  |  |
-|create_user |varchar(255) |YES |None  |  |
-|effective_end_date |datetime |YES |None  |  |
-|effective_start_date |datetime |YES |None  |  |
-|name |varchar(255) |YES |None  |  |
-|update_time |datetime |YES |None  |  |
-|update_user |varchar(255) |YES |None  |  |
-|tag_id |bigint(20) |YES |None  |  |
-|type_id |bigint(20) |YES |None  |  |
-## ueba_dept
-#### 描述: 
-#### 字段总数: 6
-|字段|类型|允许空|默认|注释|
-|:----    |:-------    |:--- |----|------      |
-|id |int(11) |NO |None  |  |
-|create_time |datetime |YES |None  |  |
-|create_user |varchar(255) |YES |None  |  |
-|name |varchar(255) |YES |None  |  |
-|update_time |datetime |YES |None  |  |
-|update_user |varchar(255) |YES |None  |  |
-## ueba_list_tag
-#### 描述: 
-#### 字段总数: 6
-|字段|类型|允许空|默认|注释|
-|:----    |:-------    |:--- |----|------      |
-|id |bigint(20) |NO |None  |  |
-|create_time |datetime |YES |None  |  |
-|create_user |varchar(255) |YES |None  |  |
-|name |varchar(255) |YES |None  |  |
-|update_time |datetime |YES |None  |  |
-|update_user |varchar(255) |YES |None  |  |
-## ueba_list_type
-#### 描述: 
-#### 字段总数: 6
-|字段|类型|允许空|默认|注释|
-|:----    |:-------    |:--- |----|------      |
-|id |bigint(20) |NO |None  |  |
-|create_time |datetime |YES |None  |  |
-|create_user |varchar(255) |YES |None  |  |
-|name |varchar(255) |YES |None  |  |
-|update_time |datetime |YES |None  |  |
-|update_user |varchar(255) |YES |None  |  |
-## ueba_netloc
-#### 描述: 
-#### 字段总数: 6
-|字段|类型|允许空|默认|注释|
-|:----    |:-------    |:--- |----|------      |
-|id |int(11) |NO |None  |  |
-|create_time |datetime |YES |None  |  |
-|create_user |varchar(255) |YES |None  |  |
-|name |varchar(255) |YES |None  |  |
-|update_time |datetime |YES |None  |  |
-|update_user |varchar(255) |YES |None  |  |
-## ueba_port
-#### 描述: 
-#### 字段总数: 8
-|字段|类型|允许空|默认|注释|
-|:----    |:-------    |:--- |----|------      |
-|id |int(11) |NO |None  |  |
-|ip_address |varchar(255) |YES |None  |  |
-|open_port |varchar(255) |YES |None  |  |
-|port_type |varchar(255) |YES |None  |  |
-|service_app_banner |varchar(255) |YES |None  |  |
-|service_app_name |varchar(255) |YES |None  |  |
-|service_app_version |varchar(255) |YES |None  |  |
-|service_type |varchar(255) |YES |None  |  |
-## ueba_staff
-#### 描述: 
-#### 字段总数: 40
-|字段|类型|允许空|默认|注释|
-|:----    |:-------    |:--- |----|------      |
-|user_id |int(11) |NO |None  |  |
-|account |varchar(255) |YES |None  |  |
-|age |int(11) |YES |None  |  |
-|city |varchar(255) |YES |None  |  |
-|common_browsers_fingerprints |varchar(255) |YES |None  |  |
-|common_device |varchar(255) |YES |None  |  |
-|common_openid |varchar(255) |YES |None  |  |
-|common_url |varchar(255) |YES |None  |  |
-|country |varchar(255) |YES |None  |  |
-|create_time |datetime |YES |None  |  |
-|create_user |varchar(255) |YES |None  |  |
-|department |varchar(255) |YES |None  |  |
-|e_mail |varchar(255) |YES |None  |  |
-|edu_level |varchar(255) |YES |None  |  |
-|employee_type |varchar(255) |YES |None  |  |
-|first_order_time |varchar(255) |YES |None  |  |
-|follow_user_list |varchar(255) |YES |None  |  |
-|icon |varchar(255) |YES |None  |  |
-|identity_card_no |varchar(255) |YES |None  |  |
-|last_login_position |varchar(255) |YES |None  |  |
-|last_login_time |varchar(255) |YES |None  |  |
-|location |varchar(255) |YES |None  |  |
-|menber_level |varchar(255) |YES |None  |  |
-|org_id |int(11) |YES |None  |  |
-|organization |varchar(255) |YES |None  |  |
-|pay_account |varchar(255) |YES |None  |  |
-|position |varchar(255) |YES |None  |  |
-|postal_code |varchar(255) |YES |None  |  |
-|province |varchar(255) |YES |None  |  |
-|register_position |varchar(255) |YES |None  |  |
-|register_time |varchar(255) |YES |None  |  |
-|status |varchar(255) |YES |None  |  |
-|street |varchar(255) |YES |None  |  |
-|tag |varchar(255) |YES |None  |  |
-|telephone_no |varchar(255) |YES |None  |  |
-|type |int(11) |YES |None  |  |
-|type_id |int(11) |YES |None  |  |
-|update_time |datetime |YES |None  |  |
-|update_user |varchar(255) |YES |None  |  |
-|user_name |varchar(255) |YES |None  |  |
-## ueba_webservice
-#### 描述: 
-#### 字段总数: 7
-|字段|类型|允许空|默认|注释|
-|:----    |:-------    |:--- |----|------      |
-|id |int(11) |NO |None  |  |
-|ip_address |varchar(255) |YES |None  |  |
-|open_port |varchar(255) |YES |None  |  |
-|service_app_banner |varchar(255) |YES |None  |  |
-|service_app_name |varchar(255) |YES |None  |  |
-|service_app_version |varchar(255) |YES |None  |  |
-|web_finger_print |varchar(255) |YES |None  |  |
 ## whois_result
-#### 描述: 
+#### 描述: whois任务结果--杨鹏
 #### 字段总数: 14
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
