@@ -1,6 +1,184 @@
+## analysis_asset_risk
+#### 描述: 内部高风险网络行为
+#### 字段总数: 19
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  | 自增长栏位 |
+|network_catagory |varchar(50) |NO |None  | 僵尸网络类型 |
+|c2_ip |varchar(50) |NO |None  | 控制主机服务器地址 |
+|c2_url |varchar(50) |NO |None  | 控制主机URL或域名信息 |
+|c2_area |varchar(50) |NO |None  | 控制主机所处地域、ISP等信息 |
+|bot_ip |varchar(50) |NO |None  | 僵尸主机IP |
+|bot_area |varchar(50) |NO |None  | 僵尸主机所处地域、ISP等信息 |
+|asset_id |varchar(50) |NO |None  | 关联资产信息 |
+|asset_risk_catagory |varchar(50) |NO |None  | 资产风险类型：bot主机还是控制主机 |
+|threat_level |varchar(50) |NO |None  | 威胁级别高中低 |
+|check_time |datetime |YES |None  | 检测发现的时间 |
+|fb_time |datetime |YES |None  | 情报发布时间 |
+|threat_source |varchar(50) |NO |None  | 情报来源机构 |
+|threat_ioc |varchar(50) |NO |None  | IP、URL情报等 |
+|log_start_time |varchar(50) |NO |None  | 此记录关联的日志最早时间 |
+|log_end_time |varchar(50) |NO |None  | 此记录关联的日志最晚时间 |
+|threat_id |varchar(50) |NO |None  | 情报ID |
+|threat_catagory |varchar(50) |NO |None  | 1，内部情报 2，外部情报 |
+|analysis_time |datetime |YES |None  | 分析时间 |
+## analysis_asset_threat
+#### 描述: 资产筛选
+#### 字段总数: 30
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  | 自增长栏位 |
+|asset_id |varchar(50) |NO |None  | 情报筛选出来的资产ID号 |
+|asset_name |varchar(50) |NO |None  | 资产名 |
+|asset_ip |varchar(50) |NO |None  | 资产IP |
+|asset_domain |varchar(50) |NO |None  | 资产域名 |
+|asset_manager |varchar(50) |NO |None  | 资产责任人 |
+|asset_oper_sys |varchar(50) |NO |None  | 资产所在业务系统 |
+|asset_system_info |varchar(50) |NO |None  | 情报涉及到的系统或应用信息 |
+|url |varchar(50) |NO |None  | 匹配资产的情报的具体URL |
+|fb_time |datetime |YES |None  | 情报发布时间 |
+|check_time |datetime |YES |None  | 检测筛选资产时间 |
+|warn_status |varchar(50) |NO |None  | 是否触发告警或预警操作 |
+|threat_ioc |varchar(50) |NO |None  | 匹配资产的情报类型，如IP情报，URL情报等 |
+|threat_source |varchar(50) |NO |None  | 情报来源机构 |
+|threat_credit |varchar(50) |NO |None  | 情报信誉值 |
+|threat_type |varchar(50) |NO |None  | 威胁类型 |
+|vul_name |varchar(50) |NO |None  | 情报中涉及到的漏洞信息 |
+|vul_type |varchar(50) |NO |None  | 漏洞的类别（如DDOS） |
+|vul_target |varchar(50) |NO |None  | 漏洞的目标（如弱点或配置问题） |
+|cve |varchar(50) |NO |None  | 漏洞CVE编号 |
+|cnnvd |varchar(50) |NO |None  | 漏洞CNNVD编号 |
+|vul_level |varchar(50) |NO |None  | 漏洞风险级别 |
+|threat_actor |varchar(200) |NO |None  | 情报事件中技术和程序 |
+|threat_link |varchar(200) |NO |None  | 外部地址 |
+|patch |varchar(200) |NO |None  | 厂商或权威机构发布的修复措施 |
+|threat_desc |varchar(200) |NO |None  | 情报内容描述 |
+|threat_report |varchar(512) |NO |None  | 报告原文（如PDF、WORD、XML、HTML等格式文档） |
+|threat_id |varchar(50) |NO |None  | 情报ID |
+|threat_catagory |varchar(11) |NO |None  | 1，内部情报 2，外部情报 |
+|analysis_time |datetime |YES |None  | 分析时间 |
+## analysis_asset_vul
+#### 描述: 漏洞情报
+#### 字段总数: 26
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  | 自增长栏位 |
+|asset_id |varchar(50) |NO |None  | 情报筛选出来的资产ID号s |
+|asset_name |varchar(50) |NO |None  | 资产名 |
+|asset_ip |varchar(50) |NO |None  | 资产IP |
+|manager |varchar(50) |NO |None  | 资产责任人 |
+|asset_oper_sys |varchar(50) |NO |None  | 资产所在业务系统 |
+|asset_system_info |varchar(50) |NO |None  | 情报涉及到的系统或应用信息 |
+|fb_time |datetime |YES |None  | 情报发布时间 |
+|scan_time |datetime |YES |None  | 资产漏洞扫描时间 |
+|warn_status |varchar(50) |NO |None  | 是否触发告警或预警操作 |
+|threat_ioc |varchar(50) |NO |None  | 匹配资产的情报类型，这里是漏洞情报 |
+|threat_source |varchar(50) |NO |None  | 情报来源机构 |
+|vul_name |varchar(50) |NO |None  | 情报中涉及到的漏洞信息 |
+|vul_catagory |varchar(50) |NO |None  | 漏洞的类别（如DDOS） |
+|vul_target |varchar(50) |NO |None  | 漏洞的目标（如弱点或配置问题） |
+|cve |varchar(50) |NO |None  | 漏洞CVE编号 |
+|cnnvd |varchar(50) |NO |None  | 漏洞CNNVD编号 |
+|vul_level |varchar(50) |NO |None  | 漏洞风险级别 |
+|threat_type |varchar(200) |NO |None  | 情报事件中技术和程序 |
+|threat_link |varchar(200) |NO |None  | 厂商或权威机构发布的修复措施 |
+|threat_desc |varchar(200) |NO |None  | 情报内容描述 |
+|threat_report |varchar(512) |NO |None  | 报告原文（如PDF、WORD、XML、HTML等格式文档） |
+|threat_id |varchar(50) |NO |None  | 情报ID |
+|threat_catagory |varchar(50) |NO |None  | 1，内部情报 2，外部情报 |
+|asset_domain |varchar(50) |NO |None  | 资产域名 |
+|analysis_time |datetime |YES |None  | 分析时间 |
+## analysis_attack
+#### 描述: 外部攻击
+#### 字段总数: 26
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  | 自增长栏位 |
+|log_id |varchar(50) |NO |None  | 原告警日志ID |
+|src_ip |varchar(50) |NO |None  | 原日志源IP，对应情报IP |
+|log_catagory |varchar(50) |NO |None  | 原日志类型 |
+|warn_type |varchar(50) |NO |None  | 原日志告警类型 |
+|warn_level |varchar(50) |NO |None  | 原日志告警级别 |
+|log_time |varchar(50) |NO |None  | 日志产生时间 |
+|log_detail |varchar(50) |NO |None  | 原日志详细信息 |
+|asset_id |varchar(50) |NO |None  | 资产ID号 |
+|asset_name |varchar(50) |NO |None  | 资产名 |
+|asset_ip |varchar(50) |NO |None  | 资产IP ，对应原日志目标IP |
+|manager |varchar(50) |NO |None  | 资产责任人 |
+|system |varchar(50) |NO |None  | 资产所在业务系统 |
+|fb_time |datetime |YES |None  | 情报发布时间 |
+|warn_status |varchar(50) |NO |None  | 是否触发告警或预警操作（告警/预警分开表示） |
+|threat_ioc |varchar(50) |NO |None  | 匹配日志的情报类型，如IP情报，URL情报等 |
+|threat_source |varchar(50) |NO |None  | 情报来源机构 |
+|threat_credit |varchar(50) |NO |None  | 情报信誉值 |
+|threat_type |varchar(50) |NO |None  | 情报威胁类型 |
+|threat_actor |varchar(200) |NO |None  | 行为特征 |
+|threat_link |varchar(200) |NO |None  | 外部地址 |
+|threat_desc |varchar(50) |NO |None  | 情报内容描述 |
+|threat_report |varchar(50) |NO |None  | 报告原文（如PDF、WORD、XML、HTML等格式文档） |
+|threat_id |varchar(50) |NO |None  | 情报ID |
+|threat_catagory |varchar(50) |NO |None  | 1，内部情报 2，外部情报 |
+|analysis_time |datetime |YES |None  | 分析时间 |
+## analysis_event_threat
+#### 描述: 情报关联
+#### 字段总数: 21
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  | 自增长栏位 |
+|event_id |varchar(50) |NO |None  | 事件ID |
+|event_name |varchar(50) |NO |None  | 事件名称 |
+|event_type |varchar(50) |NO |None  | 事件类型 |
+|event_level |varchar(50) |NO |None  | 级别 |
+|src_ip |varchar(50) |NO |None  | 源地址 |
+|dst_ip |varchar(50) |NO |None  | 目的地址 |
+|last_uptime |datetime |YES |None  |  |
+|event_desc |varchar(200) |NO |None  | 事件描述 |
+|threat_id |varchar(50) |NO |None  | 情报ID |
+|threat_ioc |varchar(50) |NO |None  | 1IP类2数字类3字符类 |
+|threat_source |varchar(50) |NO |None  | 情报来源机构 |
+|threat_credit |varchar(50) |NO |None  | 情报信誉值 |
+|threat_type |varchar(50) |NO |None  | 威胁类型 |
+|threat_actor |varchar(200) |NO |None  | 情报事件中技术和程序 |
+|threat_link |varchar(200) |NO |None  | 外部地址 |
+|threat_desc |varchar(200) |NO |None  | 情报内容描述 |
+|threat_report |varchar(512) |NO |None  | 报告原文 |
+|threat_catagory |varchar(11) |NO |None  | 1内部情报 2外部情报 |
+|warn_status |varchar(50) |NO |None  | 是否触发告警或预警操作 |
+|analysis_time |datetime |YES |None  | 分析时间 |
+## analysis_history_attack
+#### 描述: 历史攻击回溯
+#### 字段总数: 26
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  | 自增长栏位 |
+|log_id |varchar(50) |NO |None  | 历史日志ID |
+|src_ip |varchar(50) |NO |None  | 原日志源IP，对应情报IP |
+|log_catagory |varchar(50) |NO |None  | 原日志类型 |
+|log_warn_type |varchar(50) |NO |None  | 原日志告警类型 |
+|log_warn_level |varchar(50) |NO |None  | 原日志告警级别 |
+|log_time |datetime |YES |None  | 日志产生时间 |
+|log_detail |varchar(50) |NO |None  | 原日志详细信息 |
+|asset_id |varchar(50) |NO |None  | 情报筛选出来的资产ID号 |
+|asset_name |varchar(50) |NO |None  | 资产名 |
+|asset_ip |varchar(50) |NO |None  | 资产IP ，对应原日志目标IP |
+|manager |varchar(50) |NO |None  | 资产责任人 |
+|asset_oper_sys |varchar(50) |NO |None  | 资产所在业务系统 |
+|fb_time |varchar(50) |NO |None  | 情报发布时间 |
+|warn_status |varchar(50) |NO |None  | 是否触发告警或预警操作（告警/预警分开表示） |
+|threat_ioc |varchar(50) |NO |None  | 匹配日志的情报类型，如IP情报，URL情报等 |
+|threat_source |varchar(50) |NO |None  | 情报来源机构 |
+|threat_credit |varchar(50) |NO |None  | 情报信誉值 |
+|threat_type |varchar(200) |NO |None  | 情报威胁类型 |
+|threat_actor |varchar(200) |NO |None  | 行为特征 |
+|threat_link |varchar(200) |NO |None  | 情报链接 |
+|threat_desc |varchar(200) |NO |None  | 情报内容描述 |
+|threat_report |varchar(512) |NO |None  | 报告原文（如PDF、WORD、XML、HTML等格式文档） |
+|threat_id |varchar(50) |NO |None  | 情报ID |
+|threat_catagory |varchar(50) |NO |None  | 1，内部情报 2，外部情报 |
+|analysis_time |datetime |YES |None  | 分析时间 |
 ## asset
 #### 描述: 资产--杨鹏
-#### 字段总数: 34
+#### 字段总数: 33
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |id |bigint(20) |NO |None  |  |
@@ -28,7 +206,6 @@
 |riskscore |int(3) |YES |None  | riskscore |
 |asset_value |varchar(20) |YES |None  | 资产价值 |
 |purpose |text |YES |None  | 用途 |
-|gj_yj |tinyint(1) |YES |None  | 是否告警/预警 0：告警 1：未告警 2：预警 3.未预警 |
 |manufacturer |varchar(32) |YES |None  | 设备维护厂商 |
 |maintainer_name |varchar(32) |YES |None  | 设备维护联系人 |
 |maintainer_phone |varchar(16) |YES |None  | 设备维护联系人电话 |
@@ -283,9 +460,94 @@
 |service_name |varchar(50) |YES |None  | 服务名称 |
 |create_time |timestamp |YES |CURRENT_TIMESTAMP  |  |
 |update_time |timestamp |YES |CURRENT_TIMESTAMP  | 更新时间 |
+## event_alarm
+#### 描述: 事件告警表-牛虹
+#### 字段总数: 80
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |varchar(50) |NO |  | 日志编号 |
+|create_time |varchar(20) |YES |None  | 事件发生时间 |
+|severity |tinytext |YES |None  | 威胁等级 |
+|src_ip |varchar(40) |YES |None  | 源IP |
+|src_port |varchar(10) |YES |None  | 源端口 |
+|src_country |varchar(20) |YES |None  | 源ip所属国家 |
+|src_province |varchar(20) |YES |None  | 源IP所属省 |
+|src_city |varchar(20) |YES |None  | 源IP所属市 |
+|src_asset_name |varchar(50) |YES |None  | 源设备名 |
+|src_business_system |varchar(50) |YES |None  | 设备业务系统 |
+|src_network_domains |varchar(50) |YES |None  | 设备网络域 |
+|src_asset_value |varchar(20) |YES |None  | 资产价值 |
+|protocol |varchar(20) |YES |None  | 协议 |
+|dst_ip |varchar(40) |YES |None  | 目的IP |
+|dst_port |varchar(10) |YES |None  | 目的端口 |
+|dst_country |varchar(20) |YES |None  | 目的IP所属国家 |
+|dst_province |varchar(20) |YES |None  | 目的IP所属省 |
+|dst_city |varchar(20) |YES |None  | 目的IP所属市 |
+|dst_asset_name |varchar(50) |YES |None  | 目标设备名 |
+|dst_business_system |varchar(50) |YES |None  | 设备业务系统 |
+|dst_network_domains |varchar(50) |YES |None  | 设备网络域 |
+|dst_asset_value |varchar(20) |YES |None  | 资产价值 |
+|username |varchar(50) |YES |None  | 用户名称 |
+|event_name |varchar(50) |YES |None  | 事件名称 |
+|event_action_type |varchar(50) |YES |None  | 事件行为分类 |
+|event_technique_type |varchar(50) |YES |None  | 事件技术分类 |
+|event_model_source |varchar(50) |YES |None  | 事件来源 |
+|rule_name |varchar(50) |YES |None  | 规则名称 |
+|event_nums |varchar(20) |YES |None  | 原始日志条数 |
+|alarm_first_time |varchar(20) |YES |None  | 原始日志首次时间 |
+|alarm_last_time |varchar(20) |YES |None  | 原始日志最后时间 |
+|org_log_id |text |YES |None  | 原始日志的ID |
+|risk_level |tinytext |YES |None  | 风险等级 |
+|warn_status |tinytext |YES |None  | 告警状态告警状态（1:派单,2:待处理,3:处理中,4:处理完毕,5:关闭） |
+|event_description |varchar(2000) |YES |None  | 事件详细描述 |
+|dst_owner |varchar(50) |YES |None  | 目的资产责任人 |
+|src_owner |varchar(50) |YES |None  | 来源资产责任人 |
+|url |varchar(2000) |YES |None  | URL |
+|domain |varchar(50) |YES |None  | 域名 |
+|cookie |text |YES |None  |  |
+|focus_point |varchar(50) |YES |None  | 关注点 |
+|focus_content |varchar(2000) |YES |None  | 关注内容 |
+|ticket_id |varchar(50) |YES |None  | 工单号 |
+|process_time |varchar(20) |YES |None  | 处置时间 |
+|process_type |varchar(20) |YES |None  | 处置方式(0:忽略告警,1:转工单,2:自动响应) |
+|tag |varchar(1000) |YES |None  | 标签(多个标签ID按逗号分隔) |
+|event_device_type |varchar(50) |YES |None  | 事件设备类型 |
+|stra_scene |varchar(50) |YES |None  | 策略场景 |
+|stra_type |varchar(50) |YES |None  | 策略类型 |
+|stra_name |varchar(50) |YES |None  | 策略名称 |
+|risk_type |tinytext |YES |None  | 风险类型 |
+|risk_score |varchar(50) |YES |None  | 风险分值 |
+|capital_type |tinytext |YES |None  | 资产类型 |
+|capital |varchar(1000) |YES |None  | 资产 |
+|net_loc |varchar(50) |YES |None  | 网络位置 |
+|operation_obj |varchar(50) |YES |None  | 操作对象 |
+|brand |varchar(50) |YES |None  | 品牌 |
+|system |varchar(50) |YES |None  | 系统名称 |
+|event_channel |varchar(50) |YES |None  | 事件渠道 |
+|openid |varchar(50) |YES |None  | Openid |
+|device_fingerprint_id |varchar(50) |YES |None  | 设备ID |
+|browser_fingerprint_id |varchar(50) |YES |None  | 浏览器指纹 |
+|cookieid |varchar(50) |YES |None  | Cookieid |
+|risk_explain |varchar(3000) |YES |None  | 风险说明 |
+|model_name |varchar(200) |YES |None  | 模型名称 |
+|event_type |varchar(50) |YES |None  | 事件分类 |
+|intelligence_id |varchar(50) |YES |None  | 情报ID |
+|intelligence_type |varchar(50) |YES |None  | 情报类型 |
+|internal_event |tinytext |YES |None  | 是否内部事件 |
+|is_read |tinytext |YES |None  | 已读/未读(1:已读,2:未读) |
+|ddos_total_flow |bigint(20) |YES |None  | DDOS攻击流量总值 |
+|ddos_peak_flow |bigint(20) |YES |None  | DDOS攻击流量峰值 |
+|biz_up_flow |bigint(20) |YES |None  | 业务异常上行流量 |
+|biz_down_flow |bigint(20) |YES |None  | 业务异常下行流量 |
+|biz_now_flow |bigint(20) |YES |None  | 业务异常当前流量 |
+|biz_now_base_flow |bigint(20) |YES |None  | 业务异常当前流量基线值 |
+|biz_total_base_flow |bigint(20) |YES |None  | 业务异常总流量基线值 |
+|eqpt_asset_type |varchar(255) |YES |None  | 设备资产类型 |
+|src_asset_type |varchar(255) |YES |None  | 源地址资产类型 |
+|dst_asset_type |varchar(255) |YES |None  | 目标地址资产类型 |
 ## event_investigation_task
 #### 描述: 事件调查任务-杨祎
-#### 字段总数: 5
+#### 字段总数: 6
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |task_id |int(11) |NO |None  | 事件调查任务自增id |
@@ -293,6 +555,7 @@
 |task_describe |text |YES |None  | 事件调查任务描述 |
 |operation_time |date |YES |None  | 事件调查任务创建时间 |
 |operation_name |varchar(250) |YES |None  | 事件调查任务创建用户 |
+|task_status |int(11) |YES |None  | 事件调查任务状态1开启2关闭 |
 ## event_investigation_users_middle
 #### 描述: 事件调查任务分享用户中间表-杨祎
 #### 字段总数: 4
@@ -302,6 +565,13 @@
 |task_id |int(11) |YES |None  | 任务id |
 |user_id |int(11) |YES |None  | 被分享用户id |
 |user_name |varchar(255) |YES |None  | 被分享用户姓名 |
+## event_status
+#### 描述: 事件状态列表
+#### 字段总数: 2
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|event_status |varchar(50) |YES |None  | 事件状态 |
 ## event_tag
 #### 描述: 事件标签表-杨祎
 #### 字段总数: 3
@@ -335,7 +605,7 @@
 |event_src_ip |varchar(150) |YES |None  | 事件源ip |
 |event_dst_ip |varchar(150) |YES |None  | 事件目的ip |
 |event_focus_content |varchar(250) |YES |None  | 事件关注内容 |
-|event_severity |int(11) |YES |None  | 事件危险级别 |
+|event_severity |int(11) |YES |None  | 事件危险级别 1低危2中危3高危 |
 |task_id |int(11) |YES |None  | 事件所属任务id |
 |operatiom_time |datetime |YES |None  | 事件加入任务时间 |
 |log_start_time |datetime |YES |None  | 日志开始时间 |
@@ -352,10 +622,9 @@
 |trace_status |int(11) |YES |None  | 溯源0未运行 1运行中 2已完成 |
 ## external_asset_task_detail
 #### 描述: 外部资产扫描任务详细--杨鹏
-#### 字段总数: 8
+#### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
-|id |bigint(20) |NO |None  |  |
 |domain |varchar(255) |NO |None  | 域名 |
 |task_type |tinyint(4) |NO |None  |  |
 |call_back_keys |varchar(255) |YES |None  | 回调服务的key列表，以逗号分隔 |
@@ -382,6 +651,21 @@
 |:----    |:-------    |:--- |----|------      |
 |festival_day |varchar(8) |NO |None  |  |
 |festival_comment |varchar(255) |YES |None  |  |
+## fs_search_dictionary
+#### 描述: 
+#### 字段总数: 10
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(100) |NO |None  | 自增id |
+|log_type |varchar(200) |NO |None  | 列明对应日志类型 |
+|log_column |varchar(100) |NO |None  | 列明 |
+|log_column_name |varchar(200) |YES |None  | 列明对应名称 |
+|log_column_type |varchar(10) |YES |String  | 字段类型 |
+|description |varchar(300) |YES |None  |  |
+|create_user |varchar(50) |YES |None  | 创建者 |
+|create_time |datetime |YES |None  |  |
+|update_user |varchar(50) |YES |None  | 更新者 |
+|update_time |datetime |YES |None  |  |
 ## fs_search_params
 #### 描述: 全文检索-保存历史搜索-单吉祥
 #### 字段总数: 10
@@ -451,6 +735,27 @@
 |create_time |datetime |NO |None  | 创建时间 |
 |update_user |varchar(32) |NO |None  | 更新者 |
 |update_time |datetime |NO |None  | 更新时间 |
+## ga_knowledge_info
+#### 描述: 安全运维 - 知识库管理表 - 许瑛
+#### 字段总数: 16
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|knowledge_id |int(11) |NO |None  | 主键自增id |
+|knowledge_name |varchar(100) |YES |None  | 知识库名称 |
+|event_name |varchar(100) |YES |None  | 事件名称 |
+|event_type |tinyint(2) |YES |None  | 类型 |
+|event_level |tinyint(1) |YES |None  | 级别 |
+|event_describtion |text |YES |None  | 描述 |
+|knowledge_tag |varchar(255) |YES |None  | 标签 |
+|disposal_suggestion |text |YES |None  | 处置建议 |
+|effect_system |text |YES |None  | 影响系统 |
+|knowledge_ref |text |YES |None  | 相关引用 |
+|cve_id |varchar(32) |YES |None  | CVE编码 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+|del_flag |tinyint(1) |YES |None  | 删除标识 |
 ## ga_menu
 #### 描述: 菜单信息表-单吉祥
 #### 字段总数: 11
@@ -701,10 +1006,11 @@
 |update_user |varchar(255) |YES |None  |  |
 ## subdomain_result
 #### 描述: 子域名任务--杨鹏
-#### 字段总数: 6
+#### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |id |bigint(20) |NO |None  |  |
+|domain |varchar(255) |YES |None  |  |
 |sub_domain |varchar(255) |NO |None  |  |
 |alive |tinyint(1) |NO |0  | 是否存活 0:否，1：是 |
 |version |int(11) |NO |None  |  |
@@ -942,6 +1248,209 @@
 |notification |varchar(500) |YES |None  | 消息通知 1：消息通知，2邮件通知，3消息邮件都通知  即：01   10  11 |
 |personnel_list |varchar(1000) |YES |None  | 通知人员列表 多个人员用，逗号隔开 |
 |status |int(11) |YES |None  | 执行状态 0未运行 1运行中 2已完成 |
+## ums_com_email
+#### 描述: 
+#### 字段总数: 11
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|email_id |varchar(10) |NO |None  | 邮件序号 |
+|name |varchar(255) |YES |None  | 配置名称 |
+|smtp |varchar(255) |YES |None  | 邮件smtp服务器 |
+|smtp_port |varchar(10) |YES |None  | 发送端口 |
+|user_name |varchar(96) |NO |None  | 邮件用户名 |
+|password |varchar(32) |NO |None  | 邮件密码 |
+|encryption |tinyint(1) |YES |None  | 是否SSL加密:
+0:普通发送
+1:SSL加密发送 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+## ums_com_email_content
+#### 描述: 
+#### 字段总数: 14
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|email_id |varchar(10) |NO |None  | 邮件序号 |
+|content_id |varchar(10) |NO |None  | 内容序号 |
+|from_person |varchar(100) |YES |None  | 发信人 |
+|title |varchar(500) |NO |None  | 邮件标题 |
+|content1 |text |YES |None  | 内容1 |
+|content2 |text |YES |None  | 内容2 |
+|content3 |text |YES |None  | 内容3 |
+|content4 |text |YES |None  | 内容4 |
+|content5 |text |YES |None  | 内容5 |
+|content6 |text |YES |None  | 内容6 |
+|content7 |text |YES |None  | 内容7 |
+|content8 |text |YES |None  | 内容8 |
+|content9 |text |YES |None  | 内容9 |
+|content10 |text |YES |None  | 内容10 |
+## ums_sys_dept
+#### 描述: 
+#### 字段总数: 10
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|dept_id |varchar(32) |NO |None  | 部门编号 |
+|parent_dept_id |varchar(32) |NO |None  | 上级部门编号 |
+|dept_name |varchar(32) |NO |None  | 部门名称 |
+|dept_describe |varchar(255) |YES |None  | 部门描述 |
+|dept_sort |int(3) |YES |None  | 部门排序 |
+|del_flag |tinyint(1) |NO |None  | 删除标识
+0:未删除
+1:已删除 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+## ums_sys_function_url
+#### 描述: 
+#### 字段总数: 7
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|function_url_id |int(11) |NO |None  | 功能url编号 |
+|function_id |char(32) |NO |None  | 功能编号 |
+|url_id |char(32) |NO |None  | url编号 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+## ums_sys_permission_data
+#### 描述: 
+#### 字段总数: 10
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|data_id |varchar(32) |NO |None  | 数据权限编号 |
+|parent_data_id |varchar(32) |NO |None  | 上级数据权限编号 |
+|external_id |varchar(100) |NO |None  | 外部权限编号 |
+|data_name |varchar(32) |NO |None  | 数据权限名称 |
+|data_describe |varchar(255) |YES |None  | 数据权限描述 |
+|perms |varchar(100) |YES |None  | 数据权限标识 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+## ums_sys_permission_function
+#### 描述: 
+#### 字段总数: 9
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|function_id |varchar(32) |NO |None  | 功能分类 |
+|parent_function_id |varchar(32) |NO |None  | 上级功能编号 |
+|function_name |varchar(100) |NO |None  | 功能名称 |
+|function_describe |varchar(255) |YES |None  | 功能描述 |
+|function_type |tinyint(1) |YES |None  | 操作权限类型：0:页面,1:普通api,2:特殊通道api |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+## ums_sys_role
+#### 描述: 
+#### 字段总数: 9
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|role_id |varchar(32) |NO |None  | 角色编号 |
+|role_name |varchar(32) |NO |None  | 角色名称 |
+|role_describe |varchar(255) |YES |None  | 角色描述 |
+|builtin |tinyint(1) |NO |None  | 是否预置
+ 0：预置
+ 1：未预置 |
+|del_flag |tinyint(1) |NO |None  | 删除标识
+0:未删除
+1:已删除 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+## ums_sys_role_data
+#### 描述: 
+#### 字段总数: 8
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|role_data_id |int(11) |NO |None  | 角色数据权限编号 |
+|role_id |varchar(32) |NO |None  | 角色编号 |
+|data_id |varchar(32) |NO |None  | 数据权限编号 |
+|mode |tinyint(1) |YES |None  | 暂不使用 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+## ums_sys_role_function
+#### 描述: 
+#### 字段总数: 7
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|role_function_id |int(11) |NO |None  | 角色操作权限编号 |
+|role_id |varchar(32) |NO |None  | 角色编号 |
+|function_id |varchar(32) |NO |None  | 功能编号 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+## ums_sys_url
+#### 描述: 
+#### 字段总数: 9
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|url_id |varchar(32) |NO |None  | url编号 |
+|url_name |varchar(100) |NO |None  | url名称 |
+|url_path |varchar(255) |NO |None  | url路径 |
+|url_method |varchar(10) |NO |None  | 请求方式 |
+|url_describe |varchar(255) |YES |None  | url描述 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(199) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+## ums_sys_user
+#### 描述: 
+#### 字段总数: 26
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|user_id |varchar(32) |NO |None  | 用户编号 |
+|dept_id |varchar(32) |YES |None  | 部门编号 |
+|user_name |varchar(100) |NO |None  | 用户名 |
+|password |varchar(32) |NO |None  | 密码 |
+|password_old |varchar(32) |YES |None  | 旧密码 |
+|period_from |date |NO |None  | 账号使用开始日 |
+|period_to |date |NO |None  | 账号使用结束日 |
+|status |tinyint(1) |NO |None  | 状态
+0：正常
+1：锁定 |
+|real_name |varchar(32) |YES |None  | 员工姓名 |
+|code |varchar(100) |YES |None  | 员工工号 |
+|sex |varchar(1) |YES |None  | 员工性别
+0:男
+1:女 |
+|telephone |varchar(11) |YES |None  | 联系电话 |
+|email |varchar(100) |NO |None  | 电子邮箱 |
+|leader |varchar(100) |YES |None  | 直属领导 |
+|login_voucher |varchar(100) |YES |None  | 单点登录凭证 |
+|fail_count |int(11) |YES |None  | 失败次数 |
+|lock_date |datetime |YES |None  | 锁定日期 |
+|final_login_ip |varchar(15) |YES |None  | 最后登录ip |
+|final_login_date |date |YES |None  | 最后登录时间 |
+|builtin |tinyint(1) |NO |None  | 是否预置
+0：预置
+1：未预置 |
+|security_code |varchar(128) |YES |None  |  |
+|del_flag |tinyint(1) |NO |None  | 删除标识
+0:未删除
+1:已删除 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+## ums_sys_user_role
+#### 描述: 
+#### 字段总数: 7
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|user_role_id |int(11) |NO |None  | 人员角色编号 |
+|user_id |varchar(32) |NO |None  | 用户编号 |
+|role_id |varchar(32) |NO |None  | 角色编号 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
 ## whois_result
 #### 描述: whois任务结果--杨鹏
 #### 字段总数: 14
