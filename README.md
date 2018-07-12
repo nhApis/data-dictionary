@@ -542,9 +542,9 @@
 |biz_now_flow |bigint(20) |YES |None  | 业务异常当前流量 |
 |biz_now_base_flow |bigint(20) |YES |None  | 业务异常当前流量基线值 |
 |biz_total_base_flow |bigint(20) |YES |None  | 业务异常总流量基线值 |
-|eqpt_asset_type |varchar(255) |YES |None  | 设备资产类型 |
-|src_asset_type |varchar(255) |YES |None  | 源地址资产类型 |
-|dst_asset_type |varchar(255) |YES |None  | 目标地址资产类型 |
+|eqpt_asset_type |varchar(300) |YES |None  | 设备资产类型 |
+|src_asset_type |varchar(300) |YES |None  | 源地址资产类型 |
+|dst_asset_type |varchar(300) |YES |None  | 目标地址资产类型 |
 ## event_investigation_task
 #### 描述: 事件调查任务-杨祎
 #### 字段总数: 6
