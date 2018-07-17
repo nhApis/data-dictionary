@@ -1,6 +1,6 @@
 ## analysis_asset_risk
 #### 描述: 内部高风险网络行为
-#### 字段总数: 19
+#### 字段总数: 21
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |id |int(11) |NO |None  | 自增长栏位 |
@@ -21,7 +21,9 @@
 |log_end_time |varchar(50) |NO |None  | 此记录关联的日志最晚时间 |
 |threat_id |varchar(50) |NO |None  | 情报ID |
 |threat_catagory |varchar(50) |NO |None  | 1，内部情报 2，外部情报 |
-|analysis_time |datetime |YES |None  | 分析时间 |
+|analysis_time |datetime |NO |None  | 分析时间 |
+|asset_ip |varchar(50) |NO |None  |  |
+|target_ip |varchar(50) |NO |None  |  |
 ## analysis_asset_threat
 #### 描述: 资产筛选
 #### 字段总数: 30
@@ -125,29 +127,29 @@
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |id |int(11) |NO |None  | 自增长栏位 |
-|event_id |varchar(50) |NO |None  | 事件ID |
-|event_name |varchar(50) |NO |None  | 事件名称 |
-|event_type |varchar(50) |NO |None  | 事件类型 |
-|event_level |varchar(50) |NO |None  | 级别 |
-|src_ip |varchar(50) |NO |None  | 源地址 |
-|dst_ip |varchar(50) |NO |None  | 目的地址 |
+|event_id |varchar(50) |YES |None  | 事件ID |
+|event_name |varchar(50) |YES |None  | 事件名称 |
+|event_type |varchar(50) |YES |None  | 事件类型 |
+|event_level |varchar(50) |YES |None  | 级别 |
+|src_ip |varchar(50) |YES |None  | 源地址 |
+|dst_ip |varchar(50) |YES |None  | 目的地址 |
 |last_uptime |datetime |YES |None  |  |
-|event_desc |varchar(200) |NO |None  | 事件描述 |
-|threat_id |varchar(50) |NO |None  | 情报ID |
-|threat_ioc |varchar(50) |NO |None  | 1IP类2数字类3字符类 |
-|threat_source |varchar(50) |NO |None  | 情报来源机构 |
-|threat_credit |varchar(50) |NO |None  | 情报信誉值 |
-|threat_type |varchar(50) |NO |None  | 威胁类型 |
-|threat_actor |varchar(200) |NO |None  | 情报事件中技术和程序 |
-|threat_link |varchar(200) |NO |None  | 外部地址 |
-|threat_desc |varchar(200) |NO |None  | 情报内容描述 |
-|threat_report |varchar(512) |NO |None  | 报告原文 |
-|threat_catagory |varchar(11) |NO |None  | 1内部情报 2外部情报 |
-|warn_status |varchar(50) |NO |None  | 是否触发告警或预警操作 |
+|event_desc |varchar(200) |YES |None  | 事件描述 |
+|threat_id |varchar(50) |YES |None  | 情报ID |
+|threat_ioc |varchar(50) |YES |None  | 1IP类2数字类3字符类 |
+|threat_source |varchar(50) |YES |None  | 情报来源机构 |
+|threat_credit |varchar(50) |YES |None  | 情报信誉值 |
+|threat_type |varchar(50) |YES |None  | 威胁类型 |
+|threat_actor |varchar(200) |YES |None  | 情报事件中技术和程序 |
+|threat_link |varchar(200) |YES |None  | 外部地址 |
+|threat_desc |varchar(200) |YES |None  | 情报内容描述 |
+|threat_report |varchar(512) |YES |None  | 报告原文 |
+|threat_catagory |varchar(11) |YES |None  | 1内部情报 2外部情报 |
+|warn_status |varchar(50) |YES |None  | 是否触发告警或预警操作 |
 |analysis_time |datetime |YES |None  | 分析时间 |
 ## analysis_history_attack
 #### 描述: 历史攻击回溯
-#### 字段总数: 26
+#### 字段总数: 28
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |id |int(11) |NO |None  | 自增长栏位 |
@@ -176,6 +178,8 @@
 |threat_id |varchar(50) |NO |None  | 情报ID |
 |threat_catagory |varchar(50) |NO |None  | 1，内部情报 2，外部情报 |
 |analysis_time |datetime |YES |None  | 分析时间 |
+|process_status |int(11) |YES |None  |  |
+|asset_system_info |varchar(200) |YES |None  |  |
 ## asset
 #### 描述: 资产--杨鹏
 #### 字段总数: 33
@@ -202,7 +206,7 @@
 |vendor |varchar(32) |YES |None  | 设备厂商 |
 |known_assets_type |tinyint(1) |YES |0  | 是否已知资产 |
 |physical_position |varchar(100) |YES |None  | 物理位置 |
-|network_domain_id |bigint(20) |YES |None  | 对应于property_tree里的资产域id |
+|security_domain_id |bigint(20) |YES |None  | 对应于property_tree里的资产域id |
 |riskscore |int(3) |YES |None  | riskscore |
 |asset_value |varchar(20) |YES |None  | 资产价值 |
 |purpose |text |YES |None  | 用途 |
@@ -216,7 +220,7 @@
 |assets_src_type |tinyint(1) |YES |1  | 资产来源 1:批量导入 2:人工添加 3:流量解析 4:日志解析 |
 ## cmdb_hosts
 #### 描述: 国信cmdb资产表-单吉祥
-#### 字段总数: 12
+#### 字段总数: 13
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |instanceid |varchar(50) |NO |  | id/主机id |
@@ -231,6 +235,7 @@
 |network_domain |varchar(100) |YES |None  | 网络域(DMZ域/非DMZ域) |
 |asset_value |varchar(20) |YES |None  | 资产价值 |
 |nettype |varchar(100) |YES |None  |  |
+|hostnmae |varchar(255) |YES |None  |  |
 ## custom_threshold
 #### 描述: 前端界面单值图表-阈值控制表-单吉祥
 #### 字段总数: 3
@@ -462,7 +467,7 @@
 |update_time |timestamp |YES |CURRENT_TIMESTAMP  | 更新时间 |
 ## event_alarm
 #### 描述: 事件告警表-牛虹
-#### 字段总数: 80
+#### 字段总数: 76
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |id |varchar(50) |NO |  | 日志编号 |
@@ -512,15 +517,9 @@
 |process_type |varchar(20) |YES |None  | 处置方式(0:忽略告警,1:转工单,2:自动响应) |
 |tag |varchar(1000) |YES |None  | 标签(多个标签ID按逗号分隔) |
 |event_device_type |varchar(50) |YES |None  | 事件设备类型 |
-|stra_scene |varchar(50) |YES |None  | 策略场景 |
-|stra_type |varchar(50) |YES |None  | 策略类型 |
-|stra_name |varchar(50) |YES |None  | 策略名称 |
+|rule_type |varchar(50) |YES |None  | 策略类型(离线、近实时) |
 |risk_type |tinytext |YES |None  | 风险类型 |
 |risk_score |varchar(50) |YES |None  | 风险分值 |
-|capital_type |tinytext |YES |None  | 资产类型 |
-|capital |varchar(1000) |YES |None  | 资产 |
-|net_loc |varchar(50) |YES |None  | 网络位置 |
-|operation_obj |varchar(50) |YES |None  | 操作对象 |
 |brand |varchar(50) |YES |None  | 品牌 |
 |system |varchar(50) |YES |None  | 系统名称 |
 |event_channel |varchar(50) |YES |None  | 事件渠道 |
@@ -535,8 +534,10 @@
 |intelligence_type |varchar(50) |YES |None  | 情报类型 |
 |internal_event |tinytext |YES |None  | 是否内部事件 |
 |is_read |tinytext |YES |None  | 已读/未读(1:已读,2:未读) |
+|ddos_att_type |varchar(50) |YES |None  | DDOS攻击类型 |
 |ddos_total_flow |bigint(20) |YES |None  | DDOS攻击流量总值 |
 |ddos_peak_flow |bigint(20) |YES |None  | DDOS攻击流量峰值 |
+|biz_event_type |varchar(50) |YES |None  | 业务异常流量事件类型 |
 |biz_up_flow |bigint(20) |YES |None  | 业务异常上行流量 |
 |biz_down_flow |bigint(20) |YES |None  | 业务异常下行流量 |
 |biz_now_flow |bigint(20) |YES |None  | 业务异常当前流量 |
@@ -553,9 +554,9 @@
 |task_id |int(11) |NO |None  | 事件调查任务自增id |
 |task_name |varchar(250) |YES |None  | 事件调查任务名称 |
 |task_describe |text |YES |None  | 事件调查任务描述 |
-|operation_time |date |YES |None  | 事件调查任务创建时间 |
+|operation_time |varchar(50) |YES |None  | 事件调查任务创建时间 |
 |operation_name |varchar(250) |YES |None  | 事件调查任务创建用户 |
-|task_status |int(11) |YES |None  | 事件调查任务状态1开启2关闭 |
+|task_status |varchar(11) |YES |None  | 事件调查任务状态1开启2锁定3关闭 |
 ## event_investigation_users_middle
 #### 描述: 事件调查任务分享用户中间表-杨祎
 #### 字段总数: 4
@@ -620,6 +621,32 @@
 |trace_user_name |varchar(50) |YES |None  | 溯源创建人 |
 |trace_task_desc |text |YES |None  | 溯源任务描述 |
 |trace_status |int(11) |YES |None  | 溯源0未运行 1运行中 2已完成 |
+## excel_data
+#### 描述: 
+#### 字段总数: 4
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|excel_id |int(11) |NO |None  |  |
+|data_code |varchar(255) |YES |None  |  |
+|excel_date |varchar(255) |YES |None  |  |
+|excel_name |varchar(255) |YES |None  |  |
+## excel_file
+#### 描述: 
+#### 字段总数: 5
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|excel_id |int(11) |NO |None  |  |
+|excel_path |varchar(255) |YES |None  |  |
+|excel_name |varchar(255) |YES |None  |  |
+|table_id |varchar(255) |YES |None  |  |
+|job_id |varchar(255) |YES |None  |  |
+## excel_manager
+#### 描述: 
+#### 字段总数: 2
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|table_id |int(11) |NO |None  |  |
+|table_name |varchar(255) |YES |None  |  |
 ## external_asset_task_detail
 #### 描述: 外部资产扫描任务详细--杨鹏
 #### 字段总数: 7
@@ -653,7 +680,7 @@
 |festival_comment |varchar(255) |YES |None  |  |
 ## fs_search_dictionary
 #### 描述: 
-#### 字段总数: 10
+#### 字段总数: 11
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |id |int(100) |NO |None  | 自增id |
@@ -661,24 +688,30 @@
 |log_column |varchar(100) |NO |None  | 列明 |
 |log_column_name |varchar(200) |YES |None  | 列明对应名称 |
 |log_column_type |varchar(10) |YES |String  | 字段类型 |
-|description |varchar(300) |YES |None  |  |
+|description |varchar(300) |YES |None  | 说明 |
+|is_check |int(2) |NO |0  | 是否被选为默认列（0：否，1：是） |
 |create_user |varchar(50) |YES |None  | 创建者 |
 |create_time |datetime |YES |None  |  |
 |update_user |varchar(50) |YES |None  | 更新者 |
 |update_time |datetime |YES |None  |  |
 ## fs_search_params
 #### 描述: 全文检索-保存历史搜索-单吉祥
-#### 字段总数: 10
+#### 字段总数: 15
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |id |bigint(100) |NO |None  | id |
 |name |varchar(100) |NO |None  | 查询条件名称 |
-|start_time |varchar(20) |NO |None  | 查询起始时间 |
-|end_time |varchar(20) |NO |None  | 查询结束时间 |
+|time_flag |int(2) |NO |1  | 时间标识（1：无，2：固定时间，3：相对时间） |
+|start_time |varchar(20) |YES |None  | 查询起始时间 |
+|end_time |varchar(20) |YES |None  | 查询结束时间 |
+|time_interval |int(10) |YES |None  | 时间间隔 |
+|time_unit |varchar(5) |YES |None  | 间隔单位（s:秒，m:分，h:小时，d:天，w:周，M：周） |
 |param_indexs |varchar(500) |YES |None  | 查询索引，多个索引用“，”分割 |
-|param_colums |varchar(500) |YES |None  | 查询列明，多列用“，”分割 |
+|param_columns |varchar(500) |YES |None  | 查询列明，多列用“，”分割 |
 |like_param |varchar(500) |YES |None  | 正则匹配，或模糊条件 |
-|user_name |varchar(100) |NO |None  | 当前登录用户 |
+|sort_column |varchar(20) |YES |None  | 所选排序列 |
+|sort_flag |varchar(5) |YES |None  | 排序规则（正序：asc，倒序：desc） |
+|user_name |varchar(500) |NO |None  | 条件可见的用户（多用户用逗好“，”隔开） |
 |comment |varchar(500) |YES |None  | 注释说明 |
 |search_type |varchar(2) |YES |None  |  |
 ## ga_access_authority
@@ -929,6 +962,23 @@
 |username |varchar(50) |NO |None  | 用户名 |
 |layout |varchar(10000) |YES |None  |  |
 |visible |varchar(10000) |YES |None  |  |
+## job_task
+#### 描述: 
+#### 字段总数: 12
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|job_id |int(11) |NO |None  |  |
+|job_day |varchar(255) |YES |None  |  |
+|job_dsc |varchar(255) |YES |None  |  |
+|job_cycle |varchar(255) |YES |None  |  |
+|job_cycle_time |varchar(255) |YES |None  |  |
+|job_frequency |varchar(255) |YES |None  |  |
+|job_month |varchar(255) |YES |None  |  |
+|job_name |varchar(255) |YES |None  |  |
+|job_output_type |varchar(255) |YES |None  |  |
+|job_start_time |varchar(255) |YES |None  |  |
+|job_table_type |varchar(255) |YES |None  |  |
+|job_week |varchar(255) |YES |None  |  |
 ## md_page_white_list
 #### 描述: 
 #### 字段总数: 8
@@ -1209,12 +1259,780 @@
 |create_time |datetime |YES |None  | 创建时间 |
 |update_user |int(11) |YES |None  | 修改人 |
 |update_time |datetime |YES |None  | 修改时间 |
+## ti_antivirus
+#### 描述: 
+#### 字段总数: 9
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|antiviru_file_id |int(11) |NO |None  | 主键自增id |
+|intelligence_file_id |int(11) |NO |None  | 情报ID |
+|antivirus_name |varchar(100) |NO |None  | 反病毒软件名称 |
+|antivirus_result |varchar(255) |NO |None  | 反病毒软件结果 |
+|del_flag |tinyint(1) |YES |0  | 删除标识 0:未删 1:已删 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新时间 |
+## ti_file
+#### 描述: 
+#### 字段总数: 41
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|intelligence_file_id |int(11) |NO |None  | 主键自增id |
+|intelligence_id |varchar(32) |NO |None  | 情报ID |
+|intelligence_name |varchar(32) |YES |None  | 情报名称 |
+|intelligence_ref |text |YES |None  | 情报链接 |
+|intelligence_rep |varchar(255) |YES |None  | 情报报告 |
+|intelligence_describe |varchar(255) |YES |None  | 情报描述 |
+|intelligence_src |varchar(100) |YES |None  | 情报来源 |
+|intelligence_publish_time
+intelligence_publish_time |datetime |YES |None  | 情报发布时间 |
+|intelligence_update_time |datetime |NO |0000-00-00 00:00:00  | 情报更新时间 |
+|intelligence_patch |varchar(255) |YES |None  | 补丁 |
+|file_name |varchar(255) |NO |None  | 文件名称 |
+|file_size |varchar(32) |YES |None  | 文件大小 |
+|filehash_sha256 |varchar(128) |YES |None  | 文件哈希sha256 |
+|filehash_sha1 |varchar(128) |YES |None  | 文件哈希sha1 |
+|filehash_md5 |varchar(128) |YES |None  | 文件哈希md5 |
+|intelligence_type |tinyint(1) |YES |2  | 1为战略，2为战术，3为预警，4为通告 |
+|alive |tinyint(1) |YES |0  | 是否启用，0:启用，1:禁用 |
+|remark |varchar(255) |YES |None  | 备注标注 |
+|last_analysis |datetime |YES |None  | 最后一次检测时间 |
+|malware_family |varchar(255) |YES |None  | 恶意软件家族 |
+|malware_type |varchar(255) |YES |None  | 恶意软件类型 |
+|riskscore |tinyint(3) |YES |None  | 风险评分 |
+|stat_net_scan |text |YES |None  | 静态网络监测结果 |
+|acitve_net_scan |text |YES |None  | 动态网络监测结果 |
+|stat_reg_scan |text |YES |None  | 静态注册表监测结果 |
+|acitve_reg_scan |text |YES |None  | 动态注册表监测结果 |
+|stat_file_scan |text |YES |None  | 静态监测文件系统结果 |
+|acitve_file_scan |text |YES |None  | 动态监测文件系统结果 |
+|file_ico |text |YES |None  | 文件IOC信息 |
+|bevelscore |tinyint(3) |YES |None  | 可信度 |
+|is_ransomware |tinyint(1) |YES |0  | 是否为勒索软件 0:否，1:是 |
+|is_malware |tinyint(1) |YES |0  | 是否为蠕虫 0:否，1:是 |
+|is_white |tinyint(1) |YES |0  | 是否为白名单文件 0:否，1:是 |
+|is_trojans |tinyint(1) |YES |0  | 是否为木马 0:否，1:是 |
+|rel_ip |text |YES |None  | 关联ip |
+|rel_url |text |YES |None  | 关联url |
+|del_flag |tinyint(1) |YES |0  | 删除标识 0:未删 1:已删 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新时间 |
+## ti_file_malicious_action
+#### 描述: 
+#### 字段总数: 10
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|action_file_id |int(11) |NO |None  | 主键自增id |
+|intelligence_file_id |int(11) |NO |None  | 情报ID |
+|action_name |varchar(32) |NO |None  | 恶意行为中文名称 |
+|relation_date |datetime |NO |None  | 关联日期 |
+|is_alive |tinyint(1) |NO |0  | 0：存活 1：未存活 |
+|del_flag |tinyint(1) |NO |0  | 删除标识 0:未删 1:已删 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新时间 |
+## ti_ipaddr
+#### 描述: 
+#### 字段总数: 52
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|intelligence_ipaddr_id |int(11) |NO |None  | 主键自增id 对应ti_ipaddr_malicious_action.intelligence_ipaddr_id |
+|intelligence_id |varchar(32) |NO |None  | 情报ID |
+|intelligence_name |varchar(32) |YES |None  | 情报名称 |
+|intelligence_ref |text |YES |None  | 情报链接 |
+|intelligence_rep |varchar(255) |YES |None  | 情报报告 |
+|intelligence_describe |varchar(255) |YES |None  | 情报描述 |
+|intelligence_src |tinyint(4) |YES |None  | 情报来源(0为人工添加，1为导入，2为接口同步) |
+|intelligence_publish_time |datetime |YES |None  | 情报发布时间 |
+|intelligence_update_name |datetime |NO |0000-00-00 00:00:00  | 情报更新时间 |
+|intelligence_patch |varchar(255) |YES |None  | 补丁 |
+|ipaddr |varchar(32) |YES |None  | IP地址(UNIQUE) |
+|ipaddr_type |tinyint(4) |YES |None  | IP类型(0:IPv4类型,1:IPv6类型) |
+|asn |varchar(150) |YES |None  | 与IP地址相关的自治系统号 |
+|isp |varchar(32) |YES |None  | IP地址注册机构 |
+|country_code |varchar(5) |YES |None  | 国家代码 |
+|country |varchar(32) |YES |None  | 国家 |
+|city |varchar(32) |YES |None  | 与IP地址相关的城市 |
+|area |varchar(100) |YES |None  | 与IP地址相关的区域 |
+|zipcode |varchar(32) |YES |None  | 邮编 |
+|longitude |float |YES |None  | 经度 |
+|analysis_to_domain |varchar(255) |YES |None  | 域名反向解析记录 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+|del_flag |tinyint(4) |YES |None  | 删除标识 |
+|intelligence_type |tinyint(4) |YES |None  | 类型(1为战略，2为战术，3为预警，4为通告  默认为2) |
+|alive |tinyint(4) |YES |None  | 是否启用(0 启用 1 不启用) |
+|remark |varchar(255) |YES |None  | 备注 |
+|risk_score |tinyint(4) |YES |None  | 风险评分(0-100) |
+|bevel_score |tinyint(4) |YES |None  | 可信度(0-100) |
+|c2_addr |text |YES |None  | C2服务器地址(域名或IP) |
+|c2_type |varchar(32) |YES |None  | C2僵尸网络类型 |
+|c2_port |int(11) |YES |None  | C2端口号 |
+|c2_protocol |varchar(32) |YES |None  | C2协议 |
+|is_idc |tinyint(4) |YES |None  | 是否为idc |
+|is_proxy |tinyint(4) |YES |None  | 是否为代理 |
+|is_dynamic_ip |tinyint(4) |YES |None  | 是否为动态ip |
+|is_spam |tinyint(4) |YES |None  | 是否为恶意邮件 |
+|is_gateway |tinyint(4) |YES |None  | 是否为网关 |
+|is_whitelist |tinyint(4) |YES |None  | 是否为白名单 |
+|is_bogon |tinyint(4) |YES |None  | 是否为bogon主机 |
+|is_tor |tinyint(4) |YES |None  | 是否为洋葱网络 |
+|is_gambling |tinyint(4) |YES |None  | 是否为赌博网站 |
+|is_ransomware |tinyint(4) |YES |None  | 是否为勒索阮家 |
+|is_scanner |tinyint(4) |YES |None  | 是否为扫描器 |
+|is_malware |tinyint(4) |YES |None  | 是否为蠕虫 |
+|is_porn |tinyint(4) |YES |None  | 是否为色情网站 |
+|is_phishing |tinyint(4) |YES |None  | 是否为钓鱼网站 |
+|is_edu |tinyint(4) |YES |None  | 是否为教育网站 |
+|rel_url |text |YES |None  | 关联域名 |
+|rel_file |text |YES |None  | 关联文件 |
+## ti_ipaddr_malicious_action
+#### 描述: 
+#### 字段总数: 10
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|action_ipaddr_id |int(11) |NO |None  |  |
+|intelligence_ipaddr_id |int(11) |YES |None  | 情报ID |
+|action_name |varchar(32) |YES |None  | 恶意行为中文名称 |
+|date |datetime |YES |None  | 关联日期 |
+|is_alive |tinyint(4) |YES |None  | 是否存活 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(32) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+|del_flag |tinyint(4) |YES |None  | 删除标识 |
+## ti_phone
+#### 描述: 
+#### 字段总数: 24
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|intelligence_file_id |int(11) |NO |None  | 主键自增id |
+|intelligence_id |varchar(32) |NO |None  | 情报ID |
+|intelligence_name |varchar(32) |YES |None  | 情报名称 |
+|intelligence_ref |text |YES |None  | 情报链接 |
+|intelligence_rep |varchar(255) |YES |None  | 情报报告 |
+|intelligence_describe |varchar(255) |YES |None  | 情报描述 |
+|intelligence_src |varchar(100) |YES |None  | 情报来源 |
+|intelligence_publish_time
+intelligence_publish_time |datetime |YES |None  | 情报发布时间 |
+|intelligence_update_time |datetime |YES |0000-00-00 00:00:00  | 情报更新时间 |
+|intelligence_patch |varchar(255) |YES |None  | 补丁 |
+|phone_number |varchar(32) |NO |None  | 电话号码 |
+|number_attribution |varchar(32) |YES |None  | 号码归属地 |
+|phone_number_type |tinyint(1) |YES |None  | 0:真实运营商号码，1:虚拟运营商，2:阿里小号等 |
+|action |text |YES |None  | 保留字段 |
+|action_history |text |YES |None  | 保留字段 |
+|riskscore |tinyint(3) |YES |None  |  |
+|intelligence_type |tinyint(1) |YES |2  | 1为战略，2为战术，3为预警，4为通告 |
+|alive |tinyint(1) |YES |0  | 是否启用，0:启用，1:禁用 |
+|remark |varchar(255) |YES |None  | 备注标注 |
+|del_flag |tinyint(1) |YES |0  | 0为未删，1为已删 |
+|create_user |varchar(100) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新时间 |
+## ti_url
+#### 描述: 
+#### 字段总数: 59
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|intelligence_url_id |int(11) |NO |None  | 主键自增id, |
+|intelligence_id |varchar(32) |YES |None  | 情报ID, |
+|intelligence_name |varchar(32) |YES |None  | 情报名称, |
+|intelligence_ref |text |YES |None  | 情报链接, |
+|intelligence_rep |varchar(255) |YES |None  | 情报报告, |
+|intelligence_describe |varchar(255) |YES |None  | 情报描述, |
+|intelligence_src |varchar(100) |YES |None  | 情报来源,情报机构名称：初始化数据默认观安 |
+|intelligence_publish_time |datetime |YES |None  | 情报发布时间, |
+|intelligence_update_time |datetime |YES |None  | 情报更新时间, |
+|intelligence_patch |varchar(255) |YES |None  | 补丁, |
+|url |text |YES |None  | url地址,url |
+|isp |varchar(32) |YES |None  | ISP信息,根据IP地址查询注册机构 |
+|country_code |int(5) |YES |None  | 国家代码,国家代码 |
+|country |varchar(32) |YES |None  | 国家,与IP地址相关的国家 |
+|city |varchar(32) |YES |None  | 城市,与IP地址相关的城市 |
+|area |varchar(100) |YES |None  | 区域,与IP地址相关的区域 |
+|zipcode |varchar(32) |YES |None  | 邮编,与IP地址相关的邮政编码 |
+|longitude |float |YES |None  | 经度, |
+|latitude |float |YES |None  | 纬度, |
+|whois |text |YES |None  | whois记录,whois信息，信息不覆盖，保存历史记录 |
+|sub_domains |text |YES |None  | 子域名,获取此域名包含的子域名 |
+|page_snapshot |tinyint(4) |YES |None  | 页面快照,0为是,1为否 |
+|hot |tinyint(4) |YES |None  | 热度, |
+|analysis_to_ipaddr |varchar(255) |YES |None  | 解析地址, |
+|create_user |varchar(100) |YES |None  | 创建者,创建者 |
+|create_date |datetime |YES |None  | 创建日期,创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者,更新者 |
+|update_date |datetime |YES |None  | 更新日期,更新日期 |
+|domain_name |varchar(255) |YES |None  | 根域名名称,跟域名名称，用来关联whois表 |
+|domain_type |tinyint(4) |YES |None  | 根域名类型,0为cn后缀，1为com，net后缀，2为org后缀，3为xyz后缀 |
+|del_flag |tinyint(4) |YES |None  | 删除标识,逻辑删除 |
+|alexa_rank |int(11) |YES |None  | Alexa排名信息, |
+|domain_server |varchar(255) |YES |None  | 域名服务器, |
+|CA |text |YES |None  | 数字证书,预留字段 |
+|intelligence_type |tinyint(4) |YES |2  | 类型,1为战略，2为战术，3为预警，4为通告 |
+|alive |tinyint(4) |YES |None  | 是否启用, |
+|remark |varchar(255) |YES |None  | 备注,备注，标注字段 |
+|risk_score |tinyint(4) |YES |None  | 风险评分,评分1-100 |
+|bevel_score |tinyint(4) |YES |None  | 可信度,评分1-100 |
+|c2_addr |text |YES |None  | C2服务器地址,域名或IP |
+|c2_type |varchar(32) |YES |None  | C2僵尸网络类型, |
+|c2_port |int(5) |YES |None  | C2端口号, |
+|c2_protocol |varchar(32) |YES |None  | C2协议,端口对应协议 |
+|is_idc |tinyint(4) |YES |None  | 是否为idc, |
+|is_proxy |tinyint(4) |YES |None  | 是否为代理, |
+|is_dynamic_ip |tinyint(4) |YES |None  | 是否为动态ip, |
+|is_spam |tinyint(4) |YES |None  | 是否为恶意邮件, |
+|is_gateway |tinyint(4) |YES |None  | 是否为网关, |
+|is_whitelist |tinyint(4) |YES |None  | 是否为白名单, |
+|is_bogon |tinyint(4) |YES |None  | 是否为bogon主机, |
+|is_tor |tinyint(4) |YES |None  | 是否为洋葱网络, |
+|is_gambling |tinyint(4) |YES |None  | 是否为赌博网站, |
+|is_ransomware |tinyint(4) |YES |None  | 是否为勒索阮家, |
+|is_scanner |tinyint(4) |YES |None  | 是否为扫描器, |
+|is_malware |tinyint(4) |YES |None  | 是否为蠕虫, |
+|is_porn |tinyint(4) |YES |None  | 是否为色情网站, |
+|is_phishing |tinyint(4) |YES |None  | 是否为钓鱼网站, |
+|is_edu |tinyint(4) |YES |None  | 是否为教育网站, |
+|rel_ip |text |YES |None  | 关联域名,数组形式，解析后逗号分隔 |
+## ti_url_malicious_action
+#### 描述: 
+#### 字段总数: 9
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|action_url_id |int(11) |NO |None  | 主键自增id, |
+|intelligence_url_id |int(11) |YES |None  | 情报ID, |
+|action_name |varchar(32) |YES |None  | 恶意行为中文名称, |
+|date |datetime |YES |None  | 关联日期, |
+|is_alive |tinyint(4) |YES |None  | 是否存活, |
+|create_user |varchar(100) |YES |None  | 创建者, |
+|create_date |datetime |YES |None  | 创建日期, |
+|update_user |varchar(100) |YES |None  | 更新者, |
+|update_date |datetime |YES |None  | 更新日期, |
+## ti_vul_info
+#### 描述: 
+#### 字段总数: 38
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|intelligence_id |int(11) |NO |None  |  |
+|intelligence_vul_id |varchar(32) |YES |None  | 情报ID |
+|intelligence_name |varchar(32) |YES |None  | 情报名称 |
+|intelligence_ref |text |YES |None  | 情报链接 |
+|intelligence_rep |varchar(255) |YES |None  | 情报报告 |
+|intelligence_describe |varchar(255) |YES |None  | 情报描述 |
+|intelligence_src |varchar(100) |YES |None  | 情报来源 |
+|intelligence_publish_time |datetime |YES |None  | 情报发布时间 |
+|intelligence_update_name |datetime |YES |None  | 情报更新时间 |
+|intelligence_patch |varchar(255) |YES |None  | 补丁 |
+|gsvd_id |varchar(32) |YES |None  | 观安漏洞编号 |
+|cve_id |varchar(32) |YES |None  | CVE编号 |
+|bugtraq_id |varchar(200) |YES |None  | BugTraq编号 |
+|cnvd_id |varchar(32) |YES |None  | CNVD编号 |
+|cnvd_level |tinyint(4) |YES |None  | CNVD等级 |
+|cnnvd_id |varchar(32) |YES |None  | CNNVD编号 |
+|cnnvd_level |tinyint(4) |YES |None  | CNNVD等级 |
+|vul_type |tinyint(4) |YES |None  | 漏洞类型 |
+|vul_sub_type |tinyint(4) |YES |None  | 漏洞子类型 |
+|vul_source |varchar(32) |YES |None  | 漏洞来源 |
+|vul_name |varchar(255) |YES |None  | 漏洞名称 |
+|vul_detail |longtext |YES |None  | 漏洞描述 |
+|vul_range |text |YES |None  | 漏洞影响范围 |
+|vul_effect_version |varchar(255) |YES |None  | 漏洞 影响版本 |
+|vul_solution |text |YES |None  | 漏洞解决方案 |
+|vul_rank |tinyint(4) |YES |None  | 漏洞风险等级(0：高危1：中危2：低危) |
+|vul_publish_date |datetime |YES |None  | 漏洞发布日期 |
+|vul_patch |text |YES |None  | 补丁信息 |
+|vul_ref |text |YES |None  | 参考链接 |
+|create_user |varchar(255) |YES |None  | 创建者 |
+|create_date |datetime |YES |None  | 创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者 |
+|update_date |datetime |YES |None  | 更新日期 |
+|del_flag |tinyint(4) |YES |None  | 删除标识 |
+|file_name |varchar(255) |YES |None  | 文件名 |
+|intelligence_type |tinyint(4) |YES |None  | 类型(1为战略，2为战术，3为预警，4为通告) |
+|alive |tinyint(4) |YES |None  | 是否启用 |
+|remark |varchar(255) |YES |None  | 备注 |
+## ti_whois_cn
+#### 描述: 
+#### 字段总数: 14
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|cn_id |int(11) |NO |None  | 自增长编号, |
+|domain_name |varchar(255) |YES |None  | 域名名称,查询的域名地址 |
+|registrar_addr |text |YES |None  | 域名归属,域名所有人姓名 |
+|registrar_email |varchar(255) |YES |None  | 联系人信箱,域名所有人邮箱 |
+|creation_date |datetime |YES |None  | 注册时间,域名注册时间 |
+|expiry_date |datetime |YES |None  | 过期时间,域名逾期时间 |
+|domain_id |varchar(100) |YES |None  | 域名注册编号, |
+|status |text |YES |None  | 域名当前状态, |
+|name_server |text |YES |None  | 域名解析服务器, |
+|is_dbssec |tinyint(4) |YES |None  | 是否保护,DNSSEC是否开启 |
+|whois_src |tinyint(4) |YES |None  | whois信息来源,0手动新增，1导入，2同步，3自动发现 |
+|create_user |varchar(100) |YES |None  | 创建者,创建者 |
+|create_date |datetime |YES |None  | 创建日期,创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者,更新者 |
+## ti_whois_cn_history
+#### 描述: 
+#### 字段总数: 14
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|cn_history_id |int(11) |NO |None  | 自增长编号, |
+|domain_name |varchar(255) |YES |None  | 域名名称,查询的域名地址 |
+|registrar_addr |text |YES |None  | 域名归属,域名所有人姓名 |
+|registrar_email |varchar(255) |YES |None  | 联系人信箱,域名所有人邮箱 |
+|creation_date |datetime |YES |None  | 注册时间,域名注册时间 |
+|expiry_date |datetime |YES |None  | 过期时间,域名逾期时间 |
+|domain_id |varchar(100) |YES |None  | 域名注册编号, |
+|status |text |YES |None  | 域名当前状态, |
+|name_server |text |YES |None  | 域名解析服务器, |
+|is_dbssec |tinyint(4) |YES |None  | 是否保护,DNSSEC是否开启 |
+|whois_src |tinyint(4) |YES |None  | whois信息来源,0手动新增，1导入，2同步，3自动发现 |
+|create_user |varchar(100) |YES |None  | 创建者,创建者 |
+|create_date |datetime |YES |None  | 创建日期,创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者,更新者 |
+## ti_whois_com_net
+#### 描述: 
+#### 字段总数: 65
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|com_net_id |int(11) |NO |None  | 自增长编号, |
+|domain_name |varchar(255) |YES |None  | 域名,查询的域名地址 |
+|registrar_addr |text |YES |None  | 域名归属,域名所有人姓名 |
+|registrar_email |varchar(255) |YES |None  | 联系人信箱,域名所有人邮箱 |
+|creation_date |datetime |YES |None  | 注册时间,域名注册时间 |
+|expiry_date |datetime |YES |None  | 过期时间,域名逾期时间 |
+|domain_id |varchar(100) |YES |None  | 域名注册编号, |
+|status |text |YES |None  | 域名当前状态, |
+|name_server |text |YES |None  | 域名解析服务器, |
+|is_dbssec |tinyint(4) |YES |None  | 是否保护,DNSSEC是否开启 |
+|admin_city |varchar(100) |YES |None  | 管理员城市, |
+|admin_country |varchar(100) |YES |None  | 管理员国家, |
+|admin_email |varchar(255) |YES |None  | 管理员邮箱, |
+|admin_fax |varchar(100) |YES |None  | 管理员传真, |
+|admin_fax_ext |varchar(100) |YES |None  | 管理员传真分机号, |
+|admin_name |varchar(100) |YES |None  | 管理员姓名, |
+|admin_organization |varchar(100) |YES |None  | 管理员组织, |
+|admin_phone |varchar(100) |YES |None  | 管理员电话, |
+|admin_phone_ext |varchar(100) |YES |None  | 管理员电话分机号, |
+|admin_postal_code |varchar(100) |YES |None  | 管理员邮政编码, |
+|admin_state_province |varchar(100) |YES |None  | 管理员省份, |
+|admin_street |varchar(100) |YES |None  | 管理员街道, |
+|is_dnssec |tinyint(1) |YES |None  | DNS保护, |
+|domain_status |varchar(255) |YES |None  | 域名状态, |
+|registrant_city |varchar(100) |YES |None  | 注册人城市, |
+|registrant_country |varchar(100) |YES |None  | 注册人国家, |
+|registrant_email |varchar(255) |YES |None  | 注册人邮箱, |
+|registrant_fax |varchar(100) |YES |None  | 注册人传真, |
+|registrant_fax_ext |varchar(100) |YES |None  | 注册人传真分机号, |
+|registrant_name |varchar(100) |YES |None  | 注册人姓名, |
+|registrant_organization |varchar(255) |YES |None  | 注册人组织, |
+|registrant_phone |varchar(100) |YES |None  | 注册人电话, |
+|registrant_phone_ext |varchar(100) |YES |None  | 注册人电话分机号, |
+|registrant_postal_code |varchar(100) |YES |None  | 注册人邮编, |
+|registrant_state_province |varchar(100) |YES |None  | 注册人省份, |
+|registrant_street |varchar(100) |YES |None  | 注册人街道, |
+|registrar |varchar(100) |YES |None  | 注册人, |
+|registrar_abuse_contact_email |varchar(255) |YES |None  | 注册人显示邮箱, |
+|registra_abuse_contact_phone |varchar(100) |YES |None  | 注册人显示电话, |
+|registra_iana _id |varchar(255) |YES |None  | IANA编号, |
+|registrar_registration_expiration _date |datetime |YES |None  | 域名注册截止时间, |
+|registrar_url |varchar(255) |YES |None  | 注册地址, |
+|registrar_whois_server |varchar(255) |YES |None  | 注册Whois服务器地址 , |
+|registry+admin_id |varchar(100) |YES |None  | 管理员ID, |
+|registry_domain_id |varchar(100) |YES |None  | 域名iD, |
+|registry_registrant_id |varchar(100) |YES |None  | 注册人编号, |
+|registry_tech_id |varchar(100) |YES |None  | 技术人员编号, |
+|reseller |varchar(100) |YES |None  | 销售者, |
+|tech_city |varchar(100) |YES |None  | 技术人员城市, |
+|tech_country |varchar(100) |YES |None  | 技术人员国家, |
+|tech_email |varchar(255) |YES |None  | 技术人员邮箱, |
+|tech_fax |varchar(100) |YES |None  | 技术人员传真, |
+|tech_fax_ext |varchar(100) |YES |None  | 技术人员传真分机号, |
+|tech_name |varchar(100) |YES |None  | 技术人员姓名, |
+|tech_organization |varchar(255) |YES |None  | 技术人员组织, |
+|tech_phone |varchar(100) |YES |None  | 技术人员电话, |
+|tech_phone_ext |varchar(100) |YES |None  | 技术人员电话分机号, |
+|tech_postal_code |varchar(100) |YES |None  | 技术人员邮编, |
+|tech_state_province |varchar(100) |YES |None  | 技术人员省份, |
+|tech_street |varchar(100) |YES |None  | 技术人员街道, |
+|updated_date |datetime |YES |None  | 状态更新时间, |
+|whois_src |tinyint(4) |YES |None  | whois信息来源,0手动新增，1导入，2同步，3自动发现 |
+|create_user |varchar(100) |YES |None  | 创建者,创建者 |
+|create_date |datetime |YES |None  | 创建日期,创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者,更新者 |
+## ti_whois_com_net_history
+#### 描述: 
+#### 字段总数: 65
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|com_net_history_id |int(11) |NO |None  | 自增长编号, |
+|domain_name |varchar(255) |YES |None  | 域名名称,查询的域名地址 |
+|registrar_addr |text |YES |None  | 域名归属,域名所有人姓名 |
+|registrar_email |varchar(255) |YES |None  | 联系人信箱,域名所有人邮箱 |
+|creation_date |datetime |YES |None  | 注册时间,域名注册时间 |
+|expiry_date |datetime |YES |None  | 过期时间,域名逾期时间 |
+|domain_id |varchar(100) |YES |None  | 域名注册编号, |
+|status |text |YES |None  | 域名当前状态, |
+|name_server |text |YES |None  | 域名解析服务器, |
+|is_dbssec |tinyint(4) |YES |None  | 是否保护,DNSSEC是否开启 |
+|admin_city |varchar(100) |YES |None  | 管理员城市, |
+|admin_country |varchar(100) |YES |None  | 管理员国家, |
+|admin_email |varchar(255) |YES |None  | 管理员邮箱, |
+|admin_fax |varchar(100) |YES |None  | 管理员传真, |
+|admin_fax_ext |varchar(100) |YES |None  | 管理员传真分机号, |
+|admin_name |varchar(100) |YES |None  | 管理员姓名, |
+|admin_organization |varchar(100) |YES |None  | 管理员组织, |
+|admin_phone |varchar(100) |YES |None  | 管理员电话, |
+|admin_phone_ext |varchar(100) |YES |None  | 管理员电话分机号, |
+|admin_postal_code |varchar(100) |YES |None  | 管理员邮政编码, |
+|admin_state_province |varchar(100) |YES |None  | 管理员省份, |
+|admin_street |varchar(100) |YES |None  | 管理员街道, |
+|is_dnssec |tinyint(1) |YES |None  | DNS保护, |
+|domain_status |varchar(255) |YES |None  | 域名状态, |
+|registrant_city |varchar(100) |YES |None  | 注册人城市, |
+|registrant_country |varchar(100) |YES |None  | 注册人国家, |
+|registrant_email |varchar(255) |YES |None  | 注册人邮箱, |
+|registrant_fax |varchar(100) |YES |None  | 注册人传真, |
+|registrant_fax_ext |varchar(100) |YES |None  | 注册人传真分机号, |
+|registrant_name |varchar(100) |YES |None  | 注册人姓名, |
+|registrant_organization |varchar(255) |YES |None  | 注册人组织, |
+|registrant_phone |varchar(100) |YES |None  | 注册人电话, |
+|registrant_phone_ext |varchar(100) |YES |None  | 注册人电话分机号, |
+|registrant_postal_code |varchar(100) |YES |None  | 注册人邮编, |
+|registrant_state_province |varchar(100) |YES |None  | 注册人省份, |
+|registrant_street |varchar(100) |YES |None  | 注册人街道, |
+|registrar |varchar(100) |YES |None  | 注册人, |
+|registrar_abuse_contact_email |varchar(255) |YES |None  | 注册人显示邮箱, |
+|registra_abuse_contact_phone |varchar(100) |YES |None  | 注册人显示电话, |
+|registra_iana _id |varchar(255) |YES |None  | IANA编号, |
+|registrar_registration_expiration _date |datetime |YES |None  | 域名注册截止时间, |
+|registrar_url |varchar(255) |YES |None  | 注册地址, |
+|registrar_whois_server |varchar(255) |YES |None  | 注册Whois服务器地址 , |
+|registry+admin_id |varchar(100) |YES |None  | 管理员ID, |
+|registry_domain_id |varchar(100) |YES |None  | 域名iD, |
+|registry_registrant_id |varchar(100) |YES |None  | 注册人编号, |
+|registry_tech_id |varchar(100) |YES |None  | 技术人员编号, |
+|reseller |varchar(100) |YES |None  | 销售者, |
+|tech_city |varchar(100) |YES |None  | 技术人员城市, |
+|tech_country |varchar(100) |YES |None  | 技术人员国家, |
+|tech_email |varchar(255) |YES |None  | 技术人员邮箱, |
+|tech_fax |varchar(100) |YES |None  | 技术人员传真, |
+|tech_fax_ext |varchar(100) |YES |None  | 技术人员传真分机号, |
+|tech_name |varchar(100) |YES |None  | 技术人员姓名, |
+|tech_organization |varchar(255) |YES |None  | 技术人员组织, |
+|tech_phone |varchar(100) |YES |None  | 技术人员电话, |
+|tech_phone_ext |varchar(100) |YES |None  | 技术人员电话分机号, |
+|tech_postal_code |varchar(100) |YES |None  | 技术人员邮编, |
+|tech_state_province |varchar(100) |YES |None  | 技术人员省份, |
+|tech_street |varchar(100) |YES |None  | 技术人员街道, |
+|updated_date |datetime |YES |None  | 状态更新时间, |
+|whois_src |tinyint(4) |YES |None  | whois信息来源,0手动新增，1导入，2同步，3自动发现 |
+|create_user |varchar(100) |YES |None  | 创建者,创建者 |
+|create_date |datetime |YES |None  | 创建日期,创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者,更新者 |
+## ti_whois_org
+#### 描述: 
+#### 字段总数: 66
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|org_id |int(11) |NO |None  | 自增长编号, |
+|domain_name |varchar(255) |YES |None  | 域名,查询的域名地址 |
+|registrar_addr |text |YES |None  | 域名归属,域名所有人姓名 |
+|registrar_email |varchar(255) |YES |None  | 联系人信箱,域名所有人邮箱 |
+|creation_date |datetime |YES |None  | 注册时间,域名注册时间 |
+|expiry_date |datetime |YES |None  | 过期时间,域名逾期时间 |
+|domain_id |varchar(100) |YES |None  | 域名注册编号, |
+|status |text |YES |None  | 域名当前状态, |
+|name_server |text |YES |None  | 域名解析服务器, |
+|is_dbssec |tinyint(4) |YES |None  | 是否保护,DNSSEC是否开启 |
+|admin_city |varchar(100) |YES |None  | 管理员城市, |
+|admin_country |varchar(100) |YES |None  | 管理员国家, |
+|admin_email |varchar(255) |YES |None  | 管理员邮箱, |
+|admin_fax |varchar(100) |YES |None  | 管理员传真, |
+|admin_fax_ext |varchar(100) |YES |None  | 管理员传真分机号, |
+|admin_name |varchar(100) |YES |None  | 管理员姓名, |
+|admin_organization |varchar(100) |YES |None  | 管理员组织, |
+|admin_phone |varchar(100) |YES |None  | 管理员电话, |
+|admin_phone_ext |varchar(100) |YES |None  | 管理员电话分机号, |
+|admin_postal_code |varchar(100) |YES |None  | 管理员邮政编码, |
+|admin_state_province |varchar(100) |YES |None  | 管理员省份, |
+|admin_street |varchar(100) |YES |None  | 管理员街道, |
+|is_dnssec |tinyint(1) |YES |None  | DNS保护, |
+|domain_status |varchar(255) |YES |None  | 域名状态, |
+|registrant_city |varchar(100) |YES |None  | 注册人城市, |
+|registrant_country |varchar(100) |YES |None  | 注册人国家, |
+|registrant_email |varchar(255) |YES |None  | 注册人邮箱, |
+|registrant_fax |varchar(100) |YES |None  | 注册人传真, |
+|registrant_fax_ext |varchar(100) |YES |None  | 注册人传真分机号, |
+|registrant_name |varchar(100) |YES |None  | 注册人姓名, |
+|registrant_organization |varchar(255) |YES |None  | 注册人组织, |
+|registrant_phone |varchar(100) |YES |None  | 注册人电话, |
+|registrant_phone_ext |varchar(100) |YES |None  | 注册人电话分机号, |
+|registrant_postal_code |varchar(100) |YES |None  | 注册人邮编, |
+|registrant_state_province |varchar(100) |YES |None  | 注册人省份, |
+|registrant_street |varchar(100) |YES |None  | 注册人街道, |
+|registrar |varchar(100) |YES |None  | 注册人, |
+|registrar_abuse_contact_email |varchar(255) |YES |None  | 注册人显示邮箱, |
+|registra_abuse_contact_phone |varchar(100) |YES |None  | 注册人显示电话, |
+|registra_iana _id |varchar(255) |YES |None  | IANA编号, |
+|registrar_registration_expiration _date |datetime |YES |None  | 域名注册截止时间, |
+|registrar_url |varchar(255) |YES |None  | 注册地址, |
+|registrar_whois_server |varchar(255) |YES |None  | 注册Whois服务器地址 , |
+|registry+admin_id |varchar(100) |YES |None  | 管理员ID, |
+|registry_domain_id |varchar(100) |YES |None  | 域名iD, |
+|registry_expiry_date |varchar(100) |YES |None  | 注册逾期时间, |
+|registry_registrant_id |varchar(100) |YES |None  | 注册人编号, |
+|registry_tech_id |varchar(100) |YES |None  | 技术人员编号, |
+|reseller |varchar(100) |YES |None  | 销售者, |
+|tech_city |varchar(100) |YES |None  | 技术人员城市, |
+|tech_country |varchar(100) |YES |None  | 技术人员国家, |
+|tech_email |varchar(255) |YES |None  | 技术人员邮箱, |
+|tech_fax |varchar(100) |YES |None  | 技术人员传真, |
+|tech_fax_ext |varchar(100) |YES |None  | 技术人员传真分机号, |
+|tech_name |varchar(100) |YES |None  | 技术人员姓名, |
+|tech_organization |varchar(255) |YES |None  | 技术人员组织, |
+|tech_phone |varchar(100) |YES |None  | 技术人员电话, |
+|tech_phone_ext |varchar(100) |YES |None  | 技术人员电话分机号, |
+|tech_postal_code |varchar(100) |YES |None  | 技术人员邮编, |
+|tech_state_province |varchar(100) |YES |None  | 技术人员省份, |
+|tech_street |varchar(100) |YES |None  | 技术人员街道, |
+|updated_date |datetime |YES |None  | 状态更新时间, |
+|whois_src |tinyint(4) |YES |None  | whois信息来源,0手动新增，1导入，2同步，3自动发现 |
+|create_user |varchar(100) |YES |None  | 创建者,创建者 |
+|create_date |datetime |YES |None  | 创建日期,创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者,更新者 |
+## ti_whois_org_history
+#### 描述: 
+#### 字段总数: 66
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|org_history_id |int(11) |NO |None  | 自增长编号, |
+|domain_name |varchar(255) |YES |None  | 域名,查询的域名地址 |
+|registrar_addr |text |YES |None  | 域名归属,域名所有人姓名 |
+|registrar_email |varchar(255) |YES |None  | 联系人信箱,域名所有人邮箱 |
+|creation_date |datetime |YES |None  | 注册时间,域名注册时间 |
+|expiry_date |datetime |YES |None  | 过期时间,域名逾期时间 |
+|domain_id |varchar(100) |YES |None  | 域名注册编号, |
+|status |text |YES |None  | 域名当前状态, |
+|name_server |text |YES |None  | 域名解析服务器, |
+|is_dbssec |tinyint(4) |YES |None  | 是否保护,DNSSEC是否开启 |
+|admin_city |varchar(100) |YES |None  | 管理员城市, |
+|admin_country |varchar(100) |YES |None  | 管理员国家, |
+|admin_email |varchar(255) |YES |None  | 管理员邮箱, |
+|admin_fax |varchar(100) |YES |None  | 管理员传真, |
+|admin_fax_ext |varchar(100) |YES |None  | 管理员传真分机号, |
+|admin_name |varchar(100) |YES |None  | 管理员姓名, |
+|admin_organization |varchar(100) |YES |None  | 管理员组织, |
+|admin_phone |varchar(100) |YES |None  | 管理员电话, |
+|admin_phone_ext |varchar(100) |YES |None  | 管理员电话分机号, |
+|admin_postal_code |varchar(100) |YES |None  | 管理员邮政编码, |
+|admin_state_province |varchar(100) |YES |None  | 管理员省份, |
+|admin_street |varchar(100) |YES |None  | 管理员街道, |
+|is_dnssec |tinyint(1) |YES |None  | DNS保护, |
+|domain_status |varchar(255) |YES |None  | 域名状态, |
+|registrant_city |varchar(100) |YES |None  | 注册人城市, |
+|registrant_country |varchar(100) |YES |None  | 注册人国家, |
+|registrant_email |varchar(255) |YES |None  | 注册人邮箱, |
+|registrant_fax |varchar(100) |YES |None  | 注册人传真, |
+|registrant_fax_ext |varchar(100) |YES |None  | 注册人传真分机号, |
+|registrant_name |varchar(100) |YES |None  | 注册人姓名, |
+|registrant_organization |varchar(255) |YES |None  | 注册人组织, |
+|registrant_phone |varchar(100) |YES |None  | 注册人电话, |
+|registrant_phone_ext |varchar(100) |YES |None  | 注册人电话分机号, |
+|registrant_postal_code |varchar(100) |YES |None  | 注册人邮编, |
+|registrant_state_province |varchar(100) |YES |None  | 注册人省份, |
+|registrant_street |varchar(100) |YES |None  | 注册人街道, |
+|registrar |varchar(100) |YES |None  | 注册人, |
+|registrar_abuse_contact_email |varchar(255) |YES |None  | 注册人显示邮箱, |
+|registra_abuse_contact_phone |varchar(100) |YES |None  | 注册人显示电话, |
+|registra_iana _id |varchar(255) |YES |None  | IANA编号, |
+|registrar_registration_expiration _date |datetime |YES |None  | 域名注册截止时间, |
+|registrar_url |varchar(255) |YES |None  | 注册地址, |
+|registrar_whois_server |varchar(255) |YES |None  | 注册Whois服务器地址 , |
+|registry+admin_id |varchar(100) |YES |None  | 管理员ID, |
+|registry_domain_id |varchar(100) |YES |None  | 域名iD, |
+|registry_expiry_date |varchar(100) |YES |None  | 注册逾期时间, |
+|registry_registrant_id |varchar(100) |YES |None  | 注册人编号, |
+|registry_tech_id |varchar(100) |YES |None  | 技术人员编号, |
+|reseller |varchar(100) |YES |None  | 销售者, |
+|tech_city |varchar(100) |YES |None  | 技术人员城市, |
+|tech_country |varchar(100) |YES |None  | 技术人员国家, |
+|tech_email |varchar(255) |YES |None  | 技术人员邮箱, |
+|tech_fax |varchar(100) |YES |None  | 技术人员传真, |
+|tech_fax_ext |varchar(100) |YES |None  | 技术人员传真分机号, |
+|tech_name |varchar(100) |YES |None  | 技术人员姓名, |
+|tech_organization |varchar(255) |YES |None  | 技术人员组织, |
+|tech_phone |varchar(100) |YES |None  | 技术人员电话, |
+|tech_phone_ext |varchar(100) |YES |None  | 技术人员电话分机号, |
+|tech_postal_code |varchar(100) |YES |None  | 技术人员邮编, |
+|tech_state_province |varchar(100) |YES |None  | 技术人员省份, |
+|tech_street |varchar(100) |YES |None  | 管理员街道, |
+|updated_date |datetime |YES |None  | 状态更新时间, |
+|whois_src |tinyint(4) |YES |None  | whois信息来源,0手动新增，1导入，2同步，3自动发现 |
+|create_user |varchar(100) |YES |None  | 创建者,创建者 |
+|create_date |datetime |YES |None  | 创建日期,创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者,更新者 |
+## ti_whois_xyz
+#### 描述: 
+#### 字段总数: 69
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|xyz_id |int(11) |NO |None  | 自增长编号, |
+|domain_name |varchar(255) |YES |None  | 域名,查询的域名地址 |
+|registrar_addr |text |YES |None  | 域名归属,域名所有人姓名 |
+|registrar_email |varchar(255) |YES |None  | 联系人信箱,域名所有人邮箱 |
+|creation_date |datetime |YES |None  | 注册时间,域名注册时间 |
+|expiry_date |datetime |YES |None  | 过期时间,域名逾期时间 |
+|domain_id |varchar(100) |YES |None  | 域名注册编号, |
+|status |text |YES |None  | 域名当前状态, |
+|name_server |text |YES |None  | 域名解析服务器, |
+|is_dbssec |tinyint(4) |YES |None  | 是否保护,DNSSEC是否开启 |
+|admin_city |varchar(100) |YES |None  | 管理员城市, |
+|admin_country |varchar(100) |YES |None  | 管理员国家, |
+|admin_email |varchar(255) |YES |None  | 管理员邮箱, |
+|admin_fax |varchar(100) |YES |None  | 管理员传真, |
+|admin_name |varchar(100) |YES |None  | 管理员姓名, |
+|admin_organization |varchar(100) |YES |None  | 管理员组织, |
+|admin_phone |varchar(100) |YES |None  | 管理员电话, |
+|admin_postal_code |varchar(100) |YES |None  | 管理员邮政编码, |
+|admin_state_province |varchar(100) |YES |None  | 管理员省份, |
+|admin_street |varchar(100) |YES |None  | 管理员街道, |
+|billing_City |varchar(100) |YES |None  | 付费者城市, |
+|billing_country |varchar(100) |YES |None  | 付费者国家, |
+|billing_email |varchar(255) |YES |None  | 付费者邮箱, |
+|billing_fax |varchar(100) |YES |None  | 付费者传真, |
+|billing_name |varchar(100) |YES |None  | 付费者姓名, |
+|billing_organization |varchar(100) |YES |None  | 付费者组织, |
+|billing_phone |varchar(100) |YES |None  | 付费者电话, |
+|billing_postal_code |varchar(100) |YES |None  | 付费者邮编, |
+|billing_state_province |varchar(100) |YES |None  | 付费者省份, |
+|Billing Street |varchar(100) |YES |None  | 付费者街道, |
+|is_dnssec |tinyint(1) |YES |None  | DNS保护, |
+|domain_status |varchar(255) |YES |None  | 域名状态, |
+|registrant_city |varchar(100) |YES |None  | 注册人城市, |
+|registrant_country |varchar(100) |YES |None  | 注册人国家, |
+|registrant_email |varchar(255) |YES |None  | 注册人邮箱, |
+|registrant_fax |varchar(100) |YES |None  | 注册人传真, |
+|registrant_name |varchar(100) |YES |None  | 注册人姓名, |
+|registrant_organization |varchar(255) |YES |None  | 注册人组织, |
+|registrant_phone |varchar(100) |YES |None  | 注册人电话, |
+|registrant_postal_code |varchar(100) |YES |None  | 注册人邮编, |
+|registrant_state_province |varchar(100) |YES |None  | 注册人省份, |
+|registrant_street |varchar(100) |YES |None  | 注册人街道, |
+|registrar |varchar(100) |YES |None  | 注册人, |
+|registrar_abuse_contact_email |varchar(255) |YES |None  | 注册人显示邮箱, |
+|registra_abuse_contact_phone |varchar(100) |YES |None  | 注册人显示电话, |
+|registra_iana _id |varchar(255) |YES |None  | IANA编号, |
+|registrar_url |varchar(255) |YES |None  | 注册地址, |
+|registrar_whois_server |varchar(255) |YES |None  | 注册Whois服务器地址 , |
+|registry+admin_id |varchar(100) |YES |None  | 管理员ID, |
+|registry_domain_id |varchar(100) |YES |None  | 域名iD, |
+|registry_expiry_date |varchar(100) |YES |None  | 注册逾期时间, |
+|registry_registrant_id |varchar(100) |YES |None  | 注册人编号, |
+|registry_tech_id |varchar(100) |YES |None  | 技术人员编号, |
+|reseller |varchar(100) |YES |None  | 销售者, |
+|tech_city |varchar(100) |YES |None  | 技术人员城市, |
+|tech_country |varchar(100) |YES |None  | 技术人员国家, |
+|tech_email |varchar(255) |YES |None  | 技术人员邮箱, |
+|tech_fax |varchar(100) |YES |None  | 技术人员传真, |
+|tech_name |varchar(100) |YES |None  | 技术人员姓名, |
+|tech_organization |varchar(255) |YES |None  | 技术人员组织, |
+|tech_phone |varchar(100) |YES |None  | 技术人员电话, |
+|tech_postal_code |varchar(100) |YES |None  | 技术人员邮编, |
+|tech_state_province |varchar(100) |YES |None  | 技术人员省份, |
+|tech_street |varchar(100) |YES |None  | 管理员街道, |
+|updated_date |datetime |YES |None  | 状态更新时间, |
+|whois_src |tinyint(4) |YES |None  | whois信息来源,0手动新增，1导入，2同步，3自动发现 |
+|create_user |varchar(100) |YES |None  | 创建者,创建者 |
+|create_date |datetime |YES |None  | 创建日期,创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者,更新者 |
+## ti_whois_xyz_history
+#### 描述: 
+#### 字段总数: 69
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|xyz_id |int(11) |NO |None  | 自增长编号, |
+|domain_name |varchar(255) |YES |None  | 域名,查询的域名地址 |
+|registrar_addr |text |YES |None  | 域名归属,域名所有人姓名 |
+|registrar_email |varchar(255) |YES |None  | 联系人信箱,域名所有人邮箱 |
+|creation_date |datetime |YES |None  | 注册时间,域名注册时间 |
+|expiry_date |datetime |YES |None  | 过期时间,域名逾期时间 |
+|domain_id |varchar(100) |YES |None  | 域名注册编号, |
+|status |text |YES |None  | 域名当前状态, |
+|name_server |text |YES |None  | 域名解析服务器, |
+|is_dbssec |tinyint(4) |YES |None  | 是否保护,DNSSEC是否开启 |
+|admin_city |varchar(100) |YES |None  | 管理员城市, |
+|admin_country |varchar(100) |YES |None  | 管理员国家, |
+|admin_email |varchar(255) |YES |None  | 管理员邮箱, |
+|admin_fax |varchar(100) |YES |None  | 管理员传真, |
+|admin_name |varchar(100) |YES |None  | 管理员姓名, |
+|admin_organization |varchar(100) |YES |None  | 管理员组织, |
+|admin_phone |varchar(100) |YES |None  | 管理员电话, |
+|admin_postal_code |varchar(100) |YES |None  | 管理员邮政编码, |
+|admin_state_province |varchar(100) |YES |None  | 管理员省份, |
+|admin_street |varchar(100) |YES |None  | 管理员街道, |
+|billing_City |varchar(100) |YES |None  | 付费者城市, |
+|billing_country |varchar(100) |YES |None  | 付费者国家, |
+|billing_email |varchar(255) |YES |None  | 付费者邮箱, |
+|billing_fax |varchar(100) |YES |None  | 付费者传真, |
+|billing_name |varchar(100) |YES |None  | 付费者姓名, |
+|billing_organization |varchar(100) |YES |None  | 付费者组织, |
+|billing_phone |varchar(100) |YES |None  | 付费者电话, |
+|billing_postal_code |varchar(100) |YES |None  | 付费者邮编, |
+|billing_state_province |varchar(100) |YES |None  | 付费者省份, |
+|Billing Street |varchar(100) |YES |None  | 付费者街道, |
+|is_dnssec |tinyint(1) |YES |None  | DNS保护, |
+|domain_status |varchar(255) |YES |None  | 域名状态, |
+|registrant_city |varchar(100) |YES |None  | 注册人城市, |
+|registrant_country |varchar(100) |YES |None  | 注册人国家, |
+|registrant_email |varchar(255) |YES |None  | 注册人邮箱, |
+|registrant_fax |varchar(100) |YES |None  | 注册人传真, |
+|registrant_name |varchar(100) |YES |None  | 注册人姓名, |
+|registrant_organization |varchar(255) |YES |None  | 注册人组织, |
+|registrant_phone |varchar(100) |YES |None  | 注册人电话, |
+|registrant_postal_code |varchar(100) |YES |None  | 注册人邮编, |
+|registrant_state_province |varchar(100) |YES |None  | 注册人省份, |
+|registrant_street |varchar(100) |YES |None  | 注册人街道, |
+|registrar |varchar(100) |YES |None  | 注册人, |
+|registrar_abuse_contact_email |varchar(255) |YES |None  | 注册人显示邮箱, |
+|registra_abuse_contact_phone |varchar(100) |YES |None  | 注册人显示电话, |
+|registra_iana _id |varchar(255) |YES |None  | IANA编号, |
+|registrar_url |varchar(255) |YES |None  | 注册地址, |
+|registrar_whois_server |varchar(255) |YES |None  | 注册Whois服务器地址 , |
+|registry+admin_id |varchar(100) |YES |None  | 管理员ID, |
+|registry_domain_id |varchar(100) |YES |None  | 域名iD, |
+|registry_expiry_date |varchar(100) |YES |None  | 注册逾期时间, |
+|registry_registrant_id |varchar(100) |YES |None  | 注册人编号, |
+|registry_tech_id |varchar(100) |YES |None  | 技术人员编号, |
+|reseller |varchar(100) |YES |None  | 销售者, |
+|tech_city |varchar(100) |YES |None  | 技术人员城市, |
+|tech_country |varchar(100) |YES |None  | 技术人员国家, |
+|tech_email |varchar(255) |YES |None  | 技术人员邮箱, |
+|tech_fax |varchar(100) |YES |None  | 技术人员传真, |
+|tech_name |varchar(100) |YES |None  | 技术人员姓名, |
+|tech_organization |varchar(255) |YES |None  | 技术人员组织, |
+|tech_phone |varchar(100) |YES |None  | 技术人员电话, |
+|tech_postal_code |varchar(100) |YES |None  | 技术人员邮编, |
+|tech_state_province |varchar(100) |YES |None  | 技术人员省份, |
+|tech_street |varchar(100) |YES |None  | 管理员街道, |
+|updated_date |datetime |YES |None  | 状态更新时间, |
+|whois_src |tinyint(4) |YES |None  | whois信息来源,0手动新增，1导入，2同步，3自动发现 |
+|create_user |varchar(100) |YES |None  | 创建者,创建者 |
+|create_date |datetime |YES |None  | 创建日期,创建日期 |
+|update_user |varchar(100) |YES |None  | 更新者,更新者 |
 ## topo_line
 #### 描述: 拓扑线--杨鹏
-#### 字段总数: 6
+#### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |id |bigint(20) |NO |None  |  |
+|security_domain_id |bigint(20) |YES |None  |  |
 |source |bigint(20) |YES |None  | 源资产ID |
 |target |bigint(20) |YES |None  | 目的资产ID |
 |points |varchar(1000) |YES |None  | 线的中间坐标点集合 |
@@ -1222,10 +2040,11 @@
 |regenerator |varchar(32) |YES |None  | 更新人 |
 ## topo_node_pos
 #### 描述: 拓扑节点--杨鹏
-#### 字段总数: 6
+#### 字段总数: 7
 |字段|类型|允许空|默认|注释|
 |:----    |:-------    |:--- |----|------      |
 |id |bigint(20) |NO |None  |  |
+|security_domain_id |bigint(20) |YES |None  |  |
 |asset_id |bigint(20) |NO |None  | 资产id |
 |x |double |YES |None  | x坐标点 |
 |y |double |YES |None  | y坐标点 |
@@ -1248,6 +2067,420 @@
 |notification |varchar(500) |YES |None  | 消息通知 1：消息通知，2邮件通知，3消息邮件都通知  即：01   10  11 |
 |personnel_list |varchar(1000) |YES |None  | 通知人员列表 多个人员用，逗号隔开 |
 |status |int(11) |YES |None  | 执行状态 0未运行 1运行中 2已完成 |
+## ueba_account
+#### 描述: 人员信息表
+#### 字段总数: 42
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|account_id |int(11) |NO |None  | 自增id |
+|account |varchar(255) |YES |None  | 账号 |
+|age |int(11) |YES |None  | 年龄 |
+|city |varchar(255) |YES |None  | 市/县 |
+|common_browsers_fingerprints |varchar(255) |YES |None  | 常用浏览器指纹 |
+|common_device |varchar(255) |YES |None  | 常用设备 |
+|common_openid |varchar(255) |YES |None  | 常用Openid |
+|common_url |varchar(255) |YES |None  | 常用地址 |
+|country |varchar(255) |YES |None  | 国家/地区 |
+|create_time |datetime |YES |None  | 创建时间 |
+|create_user |varchar(255) |YES |None  | 创建用户 |
+|department |varchar(255) |YES |None  | 部门 |
+|edu_level |varchar(255) |YES |None  | 教育程度 |
+|first_order_time |varchar(255) |YES |None  | 首单时间 |
+|identity_card_no |varchar(255) |YES |None  | 身份证 |
+|last_login_position |varchar(255) |YES |None  | 最后一次登录时间 |
+|last_login_time |varchar(255) |YES |None  | 最后一次登录位置 |
+|location |varchar(255) |YES |None  |  |
+|menber_level |int(11) |YES |None  | 会员等级 |
+|name |varchar(255) |YES |None  | 姓名 |
+|org_id |int(11) |YES |None  | 账号组织机构ID |
+|organization |varchar(255) |YES |None  | 账号组织机构名称 |
+|pay_account |varchar(255) |YES |None  | 支付账号 |
+|position |varchar(255) |YES |None  | 职务 |
+|postal_code |varchar(255) |YES |None  | 邮政编码 |
+|province |varchar(255) |YES |None  | 省/自治区 |
+|register_position |varchar(255) |YES |None  | 注册地理位置 |
+|register_time |varchar(255) |YES |None  | 注册时间 |
+|status |varchar(255) |YES |None  | 账户状态 |
+|street |varchar(255) |YES |None  | 街道 |
+|tag |varchar(255) |YES |None  | 机器行为标签 |
+|telephone_no |varchar(255) |YES |None  | 电话号码 |
+|type |varchar(255) |YES |None  | 账号类型名称 |
+|type_id |int(11) |YES |None  | 账号类型ID |
+|update_time |datetime |YES |None  | 更新时间 |
+|update_user |varchar(255) |YES |None  | 更新用户 |
+|company |varchar(255) |YES |None  | 公司 |
+|mobilephone_no |varchar(255) |YES |None  | 手机号码 |
+|e_mail |varchar(255) |YES |None  | 邮箱 |
+|user_id |varchar(255) |YES |None  | 用户id |
+|user_integra |int(11) |YES |None  | 用户积分 |
+|user_addr |varchar(255) |YES |None  | 用户地址 |
+## ueba_area_ip
+#### 描述: 
+#### 字段总数: 4
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|area_id |varchar(10) |NO |  |  |
+|area_name |varchar(50) |YES |None  |  |
+|area_ip |varchar(20) |YES |None  |  |
+|area_type |varchar(50) |YES |None  |  |
+## ueba_asset
+#### 描述: 
+#### 字段总数: 35
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|os_distro |varchar(200) |YES |None  |  |
+|os_system |varchar(200) |YES |None  |  |
+|os_version |varchar(100) |YES |None  |  |
+|asset_value |varchar(20) |YES |None  |  |
+|assets_src |varchar(32) |YES |None  |  |
+|businesses_id |varchar(50) |YES |None  |  |
+|businesses_name |varchar(32) |YES |None  |  |
+|departments |varchar(32) |YES |None  |  |
+|domain |varchar(128) |YES |None  |  |
+|hostname |varchar(32) |YES |None  |  |
+|important_asset_type |bit(1) |YES |None  |  |
+|instanceid |varchar(50) |YES |None  |  |
+|ip |varchar(32) |YES |None  |  |
+|known_assets_type |bit(1) |YES |None  |  |
+|macaddr |varchar(31) |YES |None  |  |
+|maintainer_mail |varchar(32) |YES |None  |  |
+|maintainer_name |varchar(32) |YES |None  |  |
+|maintainer_phone |varchar(16) |YES |None  |  |
+|manufacturer |varchar(32) |YES |None  |  |
+|network_domain |varchar(100) |YES |None  |  |
+|owner_email |varchar(32) |YES |None  |  |
+|owner_name |varchar(32) |YES |None  |  |
+|owner_phone |varchar(32) |YES |None  |  |
+|public_ip |varchar(32) |YES |None  |  |
+|regenerator |varchar(32) |YES |None  |  |
+|remark |text |YES |None  |  |
+|riskscore |int(11) |YES |None  |  |
+|update_date |datetime |YES |None  |  |
+|vendor |varchar(32) |YES |None  |  |
+|create_time |datetime |YES |None  |  |
+|create_user |varchar(255) |YES |None  |  |
+|ip_address |varchar(255) |YES |None  |  |
+|update_time |datetime |YES |None  |  |
+|update_user |varchar(255) |YES |None  |  |
+## ueba_baseline
+#### 描述: 
+#### 字段总数: 5
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |bigint(20) |NO |None  |  |
+|frequency |varchar(255) |YES |None  |  |
+|generated_date |datetime |YES |None  |  |
+|name |varchar(255) |YES |None  |  |
+|quantity |bigint(20) |NO |None  |  |
+## ueba_baseline_details
+#### 描述: 
+#### 字段总数: 4
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |bigint(20) |NO |None  |  |
+|baseline_id |bigint(20) |NO |None  |  |
+|key |varchar(45) |YES |None  |  |
+|value |varchar(45) |YES |None  |  |
+## ueba_danger_list
+#### 描述: 名单信息表
+#### 字段总数: 13
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |bigint(20) |NO |None  | 自增id |
+|create_time |datetime |YES |None  | 创建时间 |
+|create_user |varchar(255) |YES |None  | 创建用户 |
+|effective_end_date |datetime |YES |None  | 失效日期 |
+|effective_start_date |datetime |YES |None  | 生效日期 |
+|name |varchar(255) |YES |None  | 名单值 |
+|update_time |datetime |YES |None  | 更新时间 |
+|update_user |varchar(255) |YES |None  | 更新用户 |
+|tag_list |varchar(20) |YES |None  | 标签 |
+|type |varchar(20) |YES |None  | 类型 |
+|comment |varchar(255) |YES |None  | 备注 |
+|content_type |int(20) |YES |None  | 子类型 |
+|source |int(20) |YES |None  | 来源 |
+## ueba_dept
+#### 描述: 
+#### 字段总数: 6
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|create_time |datetime |YES |None  |  |
+|create_user |varchar(255) |YES |None  |  |
+|name |varchar(255) |YES |None  |  |
+|update_time |datetime |YES |None  |  |
+|update_user |varchar(255) |YES |None  |  |
+## ueba_dictionary_category
+#### 描述: 
+#### 字段总数: 8
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |varchar(255) |NO |None  |  |
+|name |varchar(255) |YES |None  |  |
+|comment |varchar(255) |YES |None  |  |
+|parent_category_id |varchar(255) |NO |0  |  |
+|create_user |varchar(255) |YES |None  |  |
+|create_time |datetime |YES |None  |  |
+|update_user |varchar(255) |YES |None  |  |
+|update_time |datetime |YES |None  |  |
+## ueba_dictionary_data
+#### 描述: 
+#### 字段总数: 18
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |bigint(20) |NO |None  |  |
+|alias |varchar(255) |YES |None  |  |
+|category_id |varchar(255) |NO |None  |  |
+|comment |varchar(255) |YES |None  |  |
+|create_time |datetime |YES |None  |  |
+|data_type |varchar(255) |YES |None  |  |
+|name |varchar(255) |YES |None  |  |
+|parent_dict_id |bigint(20) |NO |0  |  |
+|update_time |datetime |YES |None  |  |
+|update_user |varchar(255) |YES |None  |  |
+|create_user |varchar(255) |YES |None  |  |
+|argument |varchar(255) |YES |None  |  |
+|seg1 |varchar(255) |YES |None  |  |
+|seg1desc |varchar(255) |YES |None  |  |
+|seg2 |varchar(255) |YES |None  |  |
+|seg2desc |varchar(255) |YES |None  |  |
+|seg3 |varchar(255) |YES |None  |  |
+|seg3desc |varchar(255) |YES |None  |  |
+## ueba_filter_agg
+#### 描述: 
+#### 字段总数: 6
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |bigint(20) |NO |None  |  |
+|data_collection1 |bigint(20) |NO |None  |  |
+|data_collection2 |bigint(20) |NO |None  |  |
+|key_by1 |varchar(255) |YES |None  |  |
+|key_by2 |varchar(255) |YES |None  |  |
+|rule_config_id |bigint(20) |NO |None  |  |
+## ueba_filter_config
+#### 描述: 
+#### 字段总数: 6
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |bigint(20) |NO |None  |  |
+|create_time |datetime |YES |None  |  |
+|create_user |varchar(255) |YES |None  |  |
+|strategy_id |bigint(20) |NO |None  |  |
+|update_time |datetime |YES |None  |  |
+|update_user |varchar(255) |YES |None  |  |
+## ueba_filter_rule
+#### 描述: 
+#### 字段总数: 5
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |bigint(20) |NO |None  |  |
+|double_data_flow |varchar(255) |YES |None  |  |
+|relation |varchar(255) |YES |None  |  |
+|rule_config_id |bigint(20) |NO |None  |  |
+|rules |varchar(2048) |YES |None  |  |
+## ueba_list_tag
+#### 描述: 
+#### 字段总数: 7
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |bigint(20) |NO |None  |  |
+|create_time |datetime |YES |None  |  |
+|create_user |varchar(255) |YES |None  |  |
+|name |varchar(255) |YES |None  |  |
+|update_time |datetime |YES |None  |  |
+|update_user |varchar(255) |YES |None  |  |
+|list_id |varchar(255) |YES |None  |  |
+## ueba_list_type
+#### 描述: 
+#### 字段总数: 6
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |bigint(20) |NO |None  |  |
+|create_time |datetime |YES |None  |  |
+|create_user |varchar(255) |YES |None  |  |
+|name |varchar(255) |YES |None  |  |
+|update_time |datetime |YES |None  |  |
+|update_user |varchar(255) |YES |None  |  |
+## ueba_main_account
+#### 描述: 
+#### 字段总数: 13
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|main_account_id |varchar(10) |NO |  |  |
+|user_name |varchar(20) |YES |None  |  |
+|lock_status |varchar(10) |YES |None  |  |
+|effect_time |datetime(6) |YES |None  |  |
+|exprie_time |datetime(6) |YES |None  |  |
+|last_login_time |datetime(6) |YES |None  |  |
+|person_name |varchar(20) |YES |None  |  |
+|org_id |varchar(10) |YES |None  |  |
+|org_name |varchar(100) |YES |None  |  |
+|main_role_id |varchar(10) |YES |None  |  |
+|main_role_name |varchar(100) |YES |None  |  |
+|main_account_tel |varchar(20) |YES |None  |  |
+|main_account_email |varchar(50) |YES |None  |  |
+## ueba_netloc
+#### 描述: 
+#### 字段总数: 6
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|create_time |datetime |YES |None  |  |
+|create_user |varchar(255) |YES |None  |  |
+|name |varchar(255) |YES |None  |  |
+|update_time |datetime |YES |None  |  |
+|update_user |varchar(255) |YES |None  |  |
+## ueba_org_tag
+#### 描述: 
+#### 字段总数: 4
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|tag_name |varchar(50) |YES |None  |  |
+|tag_org_id |varchar(10) |YES |None  |  |
+|tag_create_time |datetime(6) |YES |None  |  |
+## ueba_port
+#### 描述: 
+#### 字段总数: 13
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|ip_address |varchar(255) |YES |None  |  |
+|open_port |varchar(255) |YES |None  |  |
+|port_type |varchar(255) |YES |None  |  |
+|service_app_banner |varchar(255) |YES |None  |  |
+|service_app_name |varchar(255) |YES |None  |  |
+|service_app_version |varchar(255) |YES |None  |  |
+|service_type |varchar(255) |YES |None  |  |
+|port_id |int(11) |NO |None  |  |
+|ipaddr |varchar(255) |YES |None  |  |
+|port |int(11) |YES |None  |  |
+|service |varchar(255) |YES |None  |  |
+|service_v |varchar(255) |YES |None  |  |
+## ueba_salve_account
+#### 描述: 
+#### 字段总数: 6
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|slacct_id |varchar(10) |NO |  |  |
+|slacct_account_name |varchar(50) |YES |None  |  |
+|main_account_id |varchar(10) |YES |None  |  |
+|domain_id |varchar(10) |YES |None  |  |
+|domian_name |varchar(50) |YES |None  |  |
+|slacct_person_name |varchar(50) |YES |None  |  |
+## ueba_strategy
+#### 描述: 
+#### 字段总数: 17
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|action_condition_id |int(11) |YES |None  |  |
+|action_config_id |int(11) |YES |None  |  |
+|create_time |datetime |YES |None  |  |
+|create_user |varchar(255) |YES |None  |  |
+|dataset_one_id |int(11) |YES |None  |  |
+|dataset_two_id |int(11) |YES |None  |  |
+|edit_status |int(11) |YES |None  |  |
+|filter_id |int(11) |YES |None  |  |
+|job_id |varchar(255) |YES |None  |  |
+|name |varchar(255) |YES |None  |  |
+|risk_type |int(11) |YES |None  |  |
+|scene |varchar(255) |YES |  |  |
+|status |int(11) |YES |None  |  |
+|time_window_id |int(11) |YES |None  |  |
+|type |varchar(255) |YES |None  |  |
+|description |varchar(255) |YES |None  |  |
+## ueba_strategy_action
+#### 描述: 
+#### 字段总数: 11
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|alarm_condition |varchar(255) |YES |None  |  |
+|kill_chain_stage |int(255) |YES |None  |  |
+|mail_address |varchar(255) |YES |None  |  |
+|mail_notice |bit(1) |YES |None  |  |
+|risk_score |int(11) |YES |None  |  |
+|risk_type |int(11) |YES |None  |  |
+|strategy_id |int(11) |YES |None  |  |
+|internal_event |bit(1) |YES |None  |  |
+|risk_level |int(11) |YES |None  |  |
+|event_type |int(11) |YES |None  |  |
+## ueba_strategy_dataset
+#### 描述: 
+#### 字段总数: 4
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|condition_relation |text |YES |None  |  |
+|name |varchar(255) |YES |None  |  |
+|data_source |varchar(255) |YES |None  |  |
+## ueba_strategy_output
+#### 描述: 
+#### 字段总数: 6
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|add_list |bit(1) |YES |None  |  |
+|filed |varchar(11) |YES |None  |  |
+|list_id |int(11) |YES |None  |  |
+|strategy_id |int(11) |YES |None  |  |
+|value_type |varchar(255) |YES |None  |  |
+## ueba_strategy_repeat
+#### 描述: 
+#### 字段总数: 6
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|repace_time |varchar(255) |YES |None  |  |
+|repace_type |varchar(255) |YES |None  |  |
+|repace_value |varchar(255) |YES |None  |  |
+|strategy_id |int(11) |YES |None  |  |
+|timer_cron |varchar(255) |YES |None  |  |
+## ueba_strategy_timewindow
+#### 描述: 
+#### 字段总数: 9
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|type |varchar(255) |YES |None  |  |
+|step |int(11) |YES |None  |  |
+|step_type |varchar(255) |YES |None  |  |
+|strategy_id |int(11) |YES |None  |  |
+|time_end |datetime |YES |None  |  |
+|time_start |datetime |YES |None  |  |
+|window |int(11) |YES |None  |  |
+|window_type |varchar(255) |YES |None  |  |
+## ueba_user_organization
+#### 描述: 
+#### 字段总数: 3
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|org_id |varchar(10) |NO |  | 组织机构ID |
+|parent_id |varchar(10) |YES |None  | 组织机构父ID |
+|org_name |varchar(50) |YES |None  | 组织机构名 |
+## ueba_user_tag
+#### 描述: 
+#### 字段总数: 4
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|user_tag_id |varchar(10) |NO |  |  |
+|tag_name |varchar(100) |YES |None  |  |
+|tag_main_account_id |varchar(10) |YES |None  |  |
+|tag_create_time |datetime(6) |YES |None  |  |
+## ueba_webservice
+#### 描述: 
+#### 字段总数: 7
+|字段|类型|允许空|默认|注释|
+|:----    |:-------    |:--- |----|------      |
+|id |int(11) |NO |None  |  |
+|ip_address |varchar(255) |YES |None  |  |
+|open_port |varchar(255) |YES |None  |  |
+|service_app_banner |varchar(255) |YES |None  |  |
+|service_app_name |varchar(255) |YES |None  |  |
+|service_app_version |varchar(255) |YES |None  |  |
+|web_finger_print |varchar(255) |YES |None  |  |
 ## ums_com_email
 #### 描述: 
 #### 字段总数: 11
