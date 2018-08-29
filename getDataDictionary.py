@@ -4,7 +4,7 @@ import MySQLdb
 import sys
 reload(sys) 
 sys.setdefaultencoding('utf-8')
-db = MySQLdb.connect("localhost", "root", "idss@123!@#", "cyber", charset='utf8' )
+db = MySQLdb.connect("localhost", "root", "dddd", "cyber", charset='utf8' )
 cursor = db.cursor()
 sql_table = "SELECT	\
 	TABLE_NAME,TABLE_COMMENT	\
