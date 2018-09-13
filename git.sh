@@ -1,4 +1,4 @@
-git pull
+#git pull
 python getDataDictionary.py
 git add .
 DATE=`date "+%Y-%m-%d %H:%M:%S"`
